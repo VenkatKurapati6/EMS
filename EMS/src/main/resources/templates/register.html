@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .form-container {
+            background-color: #fff;
+            width: 400px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #5e057e;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #5e057e;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #5e057e;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #299d00;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+
+        .success-message {
+            background-color: #5e057e;
+            color: #fff;
+            padding: 10px;
+            border-radius: 3px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .password-validation {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none;
+        }
+		
+		@keyframes fadeOut {
+		    0% { opacity: 1; height: auto; }  /* Fully visible */
+		    99% { opacity: 1; height: auto; } /* Stay visible for 3 seconds */
+		    100% { opacity: 0; height: 0; padding: 0; margin: 0; visibility: hidden; }
+		}
+
+		.fade-out {
+		    animation: fadeOut 3s steps(1, end) forwards; /* Instant fade-out */
+		}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+
+        <!-- Success message -->
+        <div th:if="${param.success}">
+            <div class="success-message fade-out" >
+                <p>Registration Successful!</p>
+            </div>
+        </div>
+
+        <h2>Registration</h2>
+        
+        <!-- Error messages -->
+        <div th:if="${errorMessage}" class="error-message fade-out">
+            <p th:text="${errorMessage}"></p>
+        </div>
+
+        <div th:if="${successMessage}" class="success-message fade-out">
+            <p th:text="${successMessage}"></p>
+        </div>
+
+        <!-- Registration Form -->
+        <form th:action="@{/register}" method="post" role="form" th:object="${user}">
+			
+			<label for="id">Employee ID:</label>
+			<input type="text" id="id" name="id" th:field="*{id}" placeholder="Enter user id" required />
+			
+            <label for="fullname">Full Name:</label>
+            <input th:field="*{fullname}" type="text" id="fullname" name="fullname" placeholder="Enter your Full Name" required>
+
+            <label for="email">Email:</label>
+            <input th:field="*{email}" type="email" id="email" name="email" placeholder="Enter your Email" required>
+
+            <label for="password">Password:</label>
+            <input th:field="*{password}" type="password" id="password" name="password" placeholder="Enter your Password" required oninput="validatePassword()">
+            
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required oninput="validatePassword()">
+            
+            <!-- Password Match Validation Messages -->
+			<div class="password-validation">
+			    <span id="passwordError" class="error-message hidden" style="color: red;">❌ Passwords do not match!</span>
+			    <span id="passwordSuccess" class="hidden" style="color: green;">✔️ Passwords match!</span>
+			</div>
+
+      			<label for="role">Choose a Role:</label>
+			<select th:field="*{role}" id="role" name="role">
+			    <option value="">-- Select Role --</option>
+			    <option value="Admin">Admin</option>
+			    <option value="Manager">Manager</option>
+			    <option value="HR">HR</option>
+			    <option value="Employee">Employee</option>
+			</select>
+
+			<span id="roleError" style="color: red; display: none;">Please select a role.</span>
+
+            <!-- Register Button -->
+            <button type="submit" id="submitButton" disabled>Register</button>
+        </form>
+
+        <!-- Error message for existing user -->
+        <div>
+            <span th:if="${Userexist}" class="error-message fade-out">Email is already taken!</span>
+        </div>
+
+    </div>
+
+    <script>
+		function validatePassword() {
+		    var password = document.getElementById("password").value.trim();
+		    var confirmPassword = document.getElementById("confirmPassword").value.trim();
+		    var errorText = document.getElementById("passwordError");
+		    var successText = document.getElementById("passwordSuccess");
+		    var submitButton = document.getElementById("submitButton");
+
+		    if (confirmPassword === "") {
+		        errorText.style.display = "none"; // Hide error when confirm password is empty
+		        successText.style.display = "none"; // Hide success
+		        submitButton.disabled = true;
+		        return;
+		    }
+
+		    if (password !== confirmPassword) {
+		        errorText.style.display = "block"; // Show error
+		        successText.style.display = "none"; // Hide success
+		        submitButton.disabled = true;
+		    } else {
+		        errorText.style.display = "none"; // Hide error
+		        successText.style.display = "block"; // Show success
+		        submitButton.disabled = false;
+		    }
+		}
+
+		document.getElementById("role").addEventListener("change", function () {
+		        let role = this.value;
+		        let registerButton = document.getElementById("submitButton");
+		        let roleError = document.getElementById("roleError");
+
+		        if (role === "") {
+		            submitButton.disabled = true;
+		            roleError.style.display = "block";
+		        } else {
+		            submitButton.disabled = false;
+		            roleError.style.display = "none";
+		        }
+		    });
+			
+			    document.addEventListener("DOMContentLoaded", function () {
+			        setTimeout(function () {
+			            let messages = document.querySelectorAll('.success-message, .error-message');
+			            messages.forEach(message => {
+			                message.style.display = "none"; // Fully remove the element
+			            });
+			        }, 3000); // Wait 3 seconds before removing
+			    });
+	
+    </script>
+
+</body>
+
+</html>
