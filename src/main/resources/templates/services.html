@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services@Delancey</title>
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Ancizar+Sans:ital,wght@1,100..1000&family=Bebas+Neue&family=Caveat:wght@400..700&family=Codystar:wght@300;400&family=Comic+Relief:wght@400;700&family=Coral+Pixels&family=Dancing+Script:wght@400..700&family=Darumadrop+One&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Freehand&family=Luckiest+Guy&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Dives+Akuru&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Poetsen+One&family=Press+Start+2P&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Sawarabi+Mincho&family=Share+Tech&family=Sofadi+One&family=Tagesschrift&family=Underdog&family=WDXL+Lubrifont+TC&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .section-label {
+      color: #FFFFFF;
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
+      z-index: 2;
+    }
+
+    .section1 {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    .services-background-landing-page-image {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    .load-page-image {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+
+    }
+
+    .overlay {
+      background-color: black;
+      opacity: .4;
+      position: absolute;
+      inset: 0%;
+    }
+
+    .heading-main {
+      position: absolute;
+      top: 10%;
+      left: 5%;
+      color: #ffffff;
+      z-index: 2;
+      width: 90%;
+    }
+
+    .heading-main h1 {
+      font-size: 10vw;
+      line-height: 1;
+      font-weight: 600;
+      font-family: "WDXL Lubrifont TC", sans-serif, system-ui;
+    }
+
+    .heading-main h3 {
+      font-family: Darumadrop One, sans-serif, system-ui;
+      font-size: 6vw;
+      line-height: 1.2;
+    }
+
+    .heading-main p {
+      font-family: "Tagesschrift", system-ui;
+      text-align: center;
+      padding: 4% 20%;
+      font-size: 3vw;
+      color: #ffffff;
+    }
+
+    .section2 {
+      height: auto;
+      min-height: 95vh;
+      width: 100vw;
+      padding: 20px;
+    }
+
+    .services-info {
+      display: flex;
+      padding: 1rem;
+      flex-direction: column;
+    }
+
+    .services-show-cards {
+      margin: 1rem;
+    }
+
+    .heading-top {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 0 0 1rem 0;
+    }
+
+    .heading-top h2 {
+      font-size: 3rem;
+      font-family: Poetsen One, system-ui;
+      font-weight: 900;
+      text-align: center;
+      margin-top: 30px;
+
+    }
+
+    .heading-top p {
+      align-self: center;
+      text-align: left;
+      font-size: 2rem;
+      font-family: Ancizar Sans, system-ui;
+      padding: 0 10px;
+    }
+
+    .section2 .tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .section2 .tab {
+      flex-shrink: 0;
+      padding: 0.8rem 1.5rem;
+      background-color: #f5f5f5;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      font-family: "WDXL Lubrifont TC", system-ui;
+      font-weight: 200;
+      font-size: 0.9rem;
+    }
+
+    .section2 .tab.active {
+      background-color: #ff6600;
+      color: white;
+    }
+
+    .section2 .content-section {
+      display: none;
+      flex-direction: row;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      height: auto;
+    }
+
+    .section2 .content-section.active {
+      display: flex;
+    }
+
+    .card svg {
+      color: #ff6600;
+      height: 20%;
+
+    }
+
+
+    .services-info .card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      flex: 1 1 100%;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 5px 15px #00000050;
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+    }
+
+    .card a {
+      text-decoration: none;
+      font-weight: bold;
+      color: black;
+    }
+
+    .section3 {
+      width: 100vw;
+      height: auto;
+      min-height: 100vh;
+      background-color: #1c1c1c;
+      padding: 40px;
+      color: #ffffff;
+    }
+
+    .container-section3 {
+      display: flex;
+      flex-direction: column;
+      max-height: none;
+      max-width: 100vw;
+      margin: 0 1rem;
+      gap: 20px;
+    }
+
+
+    .fgpacard,
+    .rtlcard,
+    .softwarecard,
+    .dftcard {
+      flex: 1 1 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 250px;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .light-card {
+      background-color: #ffffff;
+    }
+
+    .dark-card {
+      background-size: cover;
+      background-position: center;
+      color: #ff0000;
+    }
+
+    .rtlcard .subheading,
+    .softwarecard .subheading {
+      font-family: "oswald";
+      font-size: 13px;
+    }
+
+    .rtlcard h2,
+    .softwarecard h2 {
+      color: black;
+      font-size: 2rem;
+      font-family: "share tech";
+    }
+
+    .rtlcard .description,
+    .softwarecard .description {
+      font-size: 1rem;
+      font-family: "Comic Relief";
+      line-height: 1.6;
+      color: #282626;
+      margin-bottom: 25px;
+    }
+
+
+    .subheading {
+      font-size: 20px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+
+
+
+    .link {
+      font-size: 1.5rem;
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .fgpacard .link,
+    .dftcard .link {
+      color: #fff;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    .fgpacard .subheading,
+    .dftcard .subheading {
+      color: #fff;
+      font-family: "oswald";
+      font-size: 25px;
+    }
+
+    .fgpacard .title,
+    .dftcard .title {
+      font-size: 24px;
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: "Comic Relief";
+      line-height: 1.6;
+      color: #c0c0c0;
+      margin-bottom: 25px;
+    }
+
+    .dftcard .title {
+      font-size: 15px;
+    }
+
+    .section4 {
+      background-color: #1c1c1c;
+      color: #fff;
+      line-height: 1.6;
+      height: auto;
+      width: 100vw;
+    }
+
+
+    .faq-section {
+      background: #fff;
+      color: #111;
+      padding: 3.5% 60px;
+    }
+
+    .faq-section .label {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 900;
+      color: #6b6a6a;
+      margin-bottom: 10px;
+      font-family: "Orbitron", sans-serif, system-ui;
+    }
+
+    .faq-section h2 {
+      font-size: 2.5rem;
+      font-family: "Alumni Sans SC", 'Roboto Slab', serif;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .faq-section .intro {
+      font-family: "Orbitron", system-ui;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .faq-item {
+      border-left: 1px solid #ccc;
+      padding-left: 20px;
+    }
+
+    .faq-item h3 {
+      font-weight: 400;
+      font-family: 'Poetsen One', serif;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .faq-item p {
+      font-family: "Sofadi One", system-ui;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .section5 {
+      background-color: #1c1c1c;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .section5 h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'Agu Display', serif;
+      margin-bottom: 20px;
+    }
+
+    .explore-buttons {
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .explore-buttons .btn {
+      padding: 10px 20px;
+      font-size: 14px;
+      border: 1px solid #fff;
+      background-color: transparent;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .explore-buttons .btn-orange {
+      background-color: #ff6b00;
+      border: none;
+      text-decoration: none;
+    }
+
+    .explore-buttons .btn:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .footer {
+      background-color: #1c1c1c;
+      color: #ffffff;
+      text-align: center;
+      z-index: 10;
+      padding: 20px;
+      font-size: 0.8rem;
+    }
+
+    @media (min-width:350px) {
+
+      .heading-main h1 {
+        padding: 3rem 0 0 0;
+        font-size: 80px;
+      }
+
+      .heading-main h3 {
+        font-size: 60px;
+      }
+
+      .heading-main p {
+        font-size: 25px;
+        padding: 4% 15%;
+      }
+
+      .heading-top h2 {
+        font-size: 2.5rem;
+      }
+
+      .heading-top p {
+        font-size: 1.5rem;
+      }
+      
+    }
+
+
+
+    @media (min-width: 600px) {
+      .section-label {
+        top: 30px;
+        left: 30px;
+        font-size: 16px;
+      }
+
+      .heading-main h1 {
+        padding: 5rem 0 0 0;
+        font-size: 7rem;
+      }
+
+      .heading-main h3 {
+        font-size: 60px;
+      }
+
+      .heading-main p {
+        font-size: 25px;
+        padding: 4% 15%;
+      }
+
+      .heading-top h2 {
+        font-size: 2.5rem;
+      }
+
+      .heading-top p {
+        font-size: 1.5rem;
+      }
+
+      .section2 .tabs {
+        justify-content: center;
+      }
+
+      .section2 .tab {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+      }
+
+      .services-info .card {
+        flex: 1 1 48%;
+      }
+
+      .section3 {
+        padding: 20px;
+      }
+
+      .container-section3 {
+        flex-direction: column;
+        margin: 0 2rem;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .fgpacard,
+      .rtlcard,
+      .softwarecard,
+      .dftcard {
+        padding: 30px;
+      }
+
+      .rtlcard h2,
+      .softwarecard h2 {
+        font-size: 2.5rem;
+      }
+
+      .faq-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section5 {
+        flex-direction: row;
+        text-align: left;
+        justify-content: space-between;
+        padding: 40px 5%;
+      }
+
+      .section5 h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0;
+      }
+
+      .explore-buttons {
+        flex-direction: row;
+        width: auto;
+        max-width: none;
+      }
+
+      .explore-buttons .btn {
+        width: auto;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .section-label {
+        top: 40px;
+        left: 40px;
+        font-size: 18px;
+      }
+
+      .heading-main h1 {
+        font-size: 150px;
+      }
+
+      .heading-main h3 {
+        font-size: 80px;
+      }
+
+      .heading-main p {
+        padding: 4% 20%;
+        font-size: 30px;
+      }
+
+      .heading-top {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        display: grid;
+        text-align: center;
+        padding: 0 0 2rem 0;
+      }
+
+      .heading-top h2 {
+        font-size: 3rem;
+      }
+
+      .heading-top p {
+        grid-area: span 1;
+        align-self: end;
+        text-align: left;
+        font-size: 2rem;
+      }
+
+      .services-info .card {
+        flex: 1;
+        min-width: 20px;
+        max-width: 32%;
+        padding: 2.5rem;
+      }
+
+      .section3 {
+        height: 100vh;
+      }
+
+      .container-section3 {
+        flex-direction: row;
+        margin:0 5rem;
+        gap: 20px;
+      }
+
+      .fgpacard,
+      .rtlcard,
+      .softwarecard,
+      .dftcard {
+        min-height: 450px;
+        padding: 40px;
+      }
+
+      .rtlcard .subheading,
+      .softwarecard .subheading {
+        font-size: 13px;
+      }
+
+      .rtlcard h2,
+      .softwarecard h2 {
+        font-size: 40px;
+      }
+
+      .rtlcard .description,
+      .softwarecard .description {
+        font-size: 1rem;
+        margin-bottom: 25px;
+      }
+
+      .subheading {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .link {
+        font-size: 1.5rem;
+      }
+
+      .fgpacard .subheading,
+      .dftcard .subheading {
+        font-size: 25px;
+      }
+
+      .fgpacard .title,
+      .dftcard .title {
+        font-size: 1rem;
+        margin-bottom: 25px;
+      }
+
+      .dftcard .title {
+        font-size: 15px;
+      }
+
+      .faq-section {
+        padding: 3.5% 60px;
+      }
+
+      .faq-section .label {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      .faq-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .faq-section .intro {
+        font-size: 14px;
+        margin-bottom: 40px;
+      }
+
+      .faq-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .faq-item {
+        padding-left: 20px;
+      }
+
+      .faq-item h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .faq-item p {
+        font-size: 14px;
+      }
+
+      .section5 {
+        padding: 60px 5%;
+      }
+
+      .section5 h1 {
+        font-size: 2.2rem;
+      }
+
+      .explore-buttons .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="section-main">
+    <div id="navbar-container"></div>
+    <div class="section1">
+      <div class="section-label">Services @ Delancey</div>
+      <div class="services-background-landing-page-image ">
+        <img src="images/services-homepage3.avif" class="load-page-image " alt="image of vlsi">
+        <div class="overlay "></div>
+      </div>
+      <div class="heading-main">
+        <h1>Delancey Services</h1>
+        <h3>unleashed. No Limits</h3>
+        <p>- We tackle the toughest chip challenges—RTL, FPGA, verification, and more. Fast, fearless, and always a step
+          ahead. Let’s make your silicon dreams real.</p>
+      </div>
+    </div>
+    <div class="section2">
+      <div class="services-show-cards">
+        <div class="heading-top">
+          <h2>VLSI design, zero stress</h2>
+          <p>VLSI is tough. We make it look easy. From Napkin sketch to Silicon, we handle the heavy lifting—so you can
+            focus on what’s next. Explore our bold, no-drama services below.</p>
+        </div>
+        <div class="services-info">
+          <div class="tabs">
+            <button class="tab active" data-target="digital">Digital design - FGPA | ASIC</button>
+            <button class="tab" data-target="dv">Digital Verification - ASIC | SOC</button>
+            <button class="tab" data-target="gls"> GLS and PAGLS</button>
+            <button class="tab" data-target="dft">DFT Services</button>
+            <button class="tab" data-target="software">Software Services</button>
+          </div>
+
+          <div id="digital" class="content-section active">
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M12.5 18.25C16.2279 18.25 19.25 15.2279 19.25 11.5C19.25 7.77208 16.2279 4.75 12.5 4.75C8.77208 4.75 5.75 7.77208 5.75 11.5C5.75 12.6007 6.01345 13.6398 6.48072 14.5578L5 19L9.71819 17.6519C10.5664 18.0361 11.5082 18.25 12.5 18.25Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+              </svg>
+              <h2>RTL minus the mess</h2>
+              <p>We turn specs into clean, power-smart RTL. ASIC or FPGA No spaghetti—just silicon-ready results.</p>
+              <a href="/DigitalDesignServices" target="_blank">Details →</a>
+            </div>
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M4 12C8.41828 12 12 8.41828 12 4C12 8.41828 15.5817 12 20 12C15.5817 12 12 15.5817 12 20C12 15.5817 8.41828 12 4 12Z"
+                  stroke-width="1.5" stroke-linejoin="round" stroke="currentColor"></path>
+              </svg>
+              <h2>Low-power, big punch</h2>
+              <p>AXI to USB, PCIe to DDR—we make it all behave. Timing closed, bugs ghosted, power trimmed.</p>
+              <a href="/DigitalDesignServices" target="_blank">Explore →</a>
+            </div>
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M19.25 12C19.25 16.0041 16.0041 19.25 12 19.25C7.99594 19.25 4.75 16.0041 4.75 12C4.75 7.99594 7.99594 4.75 12 4.75C16.0041 4.75 19.25 7.99594 19.25 12Z"
+                  stroke="currentColor" stroke-width="1.5"></path>
+                <path d="M9 12L11 14L15.5 9.5" stroke="currentColor" stroke-width="1.5">
+                </path>
+              </svg>
+              <h2>Integration, no drama</h2>
+              <p>Custom IPs. Vendor blocks. Smooth bring-up. Boards boot, software runs, everyone’s happy.</p>
+              <a href="/DigitalDesignServices" target="_blank">More →</a>
+            </div>
+          </div>
+
+          <div id="dv" class="content-section">
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M19.25 12C19.25 16.0041 16.0041 19.25 12 19.25C7.99594 19.25 4.75 16.0041 4.75 12C4.75 7.99594 7.99594 4.75 12 4.75C16.0041 4.75 19.25 7.99594 19.25 12Z"
+                  stroke="currentColor" stroke-width="1.5"></path>
+                <path d="M9 12L11 14L15.5 9.5" stroke="currentColor" stroke-width="1.5">
+                </path>
+              </svg>
+              <h2>Bugs - beware.</h2>
+              <p>From IP to SoC, we verify from scratch using SV-UVM and hit 100% coverage like it’s a habit.</p>
+              <a href="/DigitalVerificationServices" target="_blank">See how →</a>
+            </div>
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M4 12C8.41828 12 12 8.41828 12 4C12 8.41828 15.5817 12 20 12C15.5817 12 12 15.5817 12 20C12 15.5817 8.41828 12 4 12Z"
+                  stroke-width="1.5" stroke-linejoin="round" stroke="currentColor"></path>
+              </svg>
+              <h2>VIPs, not just VIP work.</h2>
+              <p>We build and plug in reusable VIPs that play nice in any testbench. Clean, modular, verified.</p>
+              <a href="/DigitalVerificationServices" target="_blank">View →</a>
+            </div>
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M12.5 18.25C16.2279 18.25 19.25 15.2279 19.25 11.5C19.25 7.77208 16.2279 4.75 12.5 4.75C8.77208 4.75 5.75 7.77208 5.75 11.5C5.75 12.6007 6.01345 13.6398 6.48072 14.5578L5 19L9.71819 17.6519C10.5664 18.0361 11.5082 18.25 12.5 18.25Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+              </svg>
+              <h2>Real-world ready.</h2>
+              <p>Low power? UPF/CPF. Gate-level sims? Done. If it can break, we test it first.</p>
+              <a href="/DigitalVerificationServices" target="_blank">Next →</a>
+            </div>
+          </div>
+
+          <div id="gls" class="content-section ">
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M4 12C8.41828 12 12 8.41828 12 4C12 8.41828 15.5817 12 20 12C15.5817 12 12 15.5817 12 20C12 15.5817 8.41828 12 4 12Z"
+                  stroke-width="1.5" stroke-linejoin="round" stroke="currentColor"></path>
+              </svg>
+              <h2>Power smart, glitch free.</h2>
+              <p>We know our way around power estimation, reduction tricks, and building power-aware flows from the
+                ground up.</p>
+              <a href="/DigitalDesignServices" target="_blank">Details →</a>
+            </div>
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M12.5 18.25C16.2279 18.25 19.25 15.2279 19.25 11.5C19.25 7.77208 16.2279 4.75 12.5 4.75C8.77208 4.75 5.75 7.77208 5.75 11.5C5.75 12.6007 6.01345 13.6398 6.48072 14.5578L5 19L9.71819 17.6519C10.5664 18.0361 11.5082 18.25 12.5 18.25Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+              </svg>
+              <h2> UPF, meet GLS.</h2>
+              <p>From X-prop cleanup to tool flows, we set up and sign off with precision—and zero surprises.</p>
+             <a href="/DigitalVerificationServices" target="_blank">Explore →</a>
+            </div>
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M19.25 12C19.25 16.0041 16.0041 19.25 12 19.25C7.99594 19.25 4.75 16.0041 4.75 12C4.75 7.99594 7.99594 4.75 12 4.75C16.0041 4.75 19.25 7.99594 19.25 12Z"
+                  stroke="currentColor" stroke-width="1.5"></path>
+                <path d="M9 12L11 14L15.5 9.5" stroke="currentColor" stroke-width="1.5">
+                </path>
+              </svg>
+              <h2> Built for safety.</h2>
+              <p> We speak ISO, ASIL, and all the other acronyms. Your safety-critical SoC? Certified and verified.</p>
+              </p>
+              <a href="/DigitalVerificationServices" target="_blank">More →</a>
+            </div>
+          </div>
+
+          <div id="dft" class="content-section">
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M12.5 18.25C16.2279 18.25 19.25 15.2279 19.25 11.5C19.25 7.77208 16.2279 4.75 12.5 4.75C8.77208 4.75 5.75 7.77208 5.75 11.5C5.75 12.6007 6.01345 13.6398 6.48072 14.5578L5 19L9.71819 17.6519C10.5664 18.0361 11.5082 18.25 12.5 18.25Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+              </svg>
+              <h2>Built to break (safely).</h2>
+              <p>We design for test like it's a superpower—DFT plans, flows, and methods that don’t flinch from first
+                silicon.</p>
+              <a href="/DftServices" target="_blank">See how →</a>
+            </div>
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M4 12C8.41828 12 12 8.41828 12 4C12 8.41828 15.5817 12 20 12C15.5817 12 12 15.5817 12 20C12 15.5817 8.41828 12 4 12Z"
+                  stroke-width="1.5" stroke-linejoin="round" stroke="currentColor"></path>
+              </svg>
+              <h2>All the scans, none of the drama.</h2>
+              <p>SCAN, LBIST, MBIST, boundary scan, even those moody IOs—we slot it all in without breaking a sweat.</p>
+              <a href="/DftServices" target="_blank">View →</a>
+            </div>
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M19.25 12C19.25 16.0041 16.0041 19.25 12 19.25C7.99594 19.25 4.75 16.0041 4.75 12C4.75 7.99594 7.99594 4.75 12 4.75C16.0041 4.75 19.25 7.99594 19.25 12Z"
+                  stroke="currentColor" stroke-width="1.5"></path>
+                <path d="M9 12L11 14L15.5 9.5" stroke="currentColor" stroke-width="1.5">
+                </path>
+              </svg>
+              <h2>Pattern party, fully verified.</h2>
+              <p>ATPG? On it. Simulations? Zero-delay, full timing. If there’s a bug hiding, we’ll find it and politely
+                show it the door.</p>
+              <a href="/DftServices" target="_blank">Next →</a>
+            </div>
+          </div>
+
+
+          <div id="software" class="content-section">
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M19.25 12C19.25 16.0041 16.0041 19.25 12 19.25C7.99594 19.25 4.75 16.0041 4.75 12C4.75 7.99594 7.99594 4.75 12 4.75C16.0041 4.75 19.25 7.99594 19.25 12Z"
+                  stroke="currentColor" stroke-width="1.5"></path>
+                <path d="M9 12L11 14L15.5 9.5" stroke="currentColor" stroke-width="1.5">
+                </path>
+              </svg>
+              <h2>We build. We fix. We repeat.</h2>
+              <p>Apps, cloud, testing—code that works and keeps working. No bugs, no drama.</p>
+              <a href="/SoftwareServices" target="_blank">See how →</a>
+            </div>
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M4 12C8.41828 12 12 8.41828 12 4C12 8.41828 15.5817 12 20 12C15.5817 12 12 15.5817 12 20C12 15.5817 8.41828 12 4 12Z"
+                  stroke-width="1.5" stroke-linejoin="round" stroke="currentColor"></path>
+              </svg>
+              <h2>Brains on hire.</h2>
+              <p>We solve messy problems with clean strategy. <br>Tech + business = synced.</p>
+              <a href="/SoftwareServices" target="_blank">View →</a>
+            </div>
+            <div class="card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" viewBox="5 0 24 24" fill="none">
+                <path
+                  d="M12.5 18.25C16.2279 18.25 19.25 15.2279 19.25 11.5C19.25 7.77208 16.2279 4.75 12.5 4.75C8.77208 4.75 5.75 7.77208 5.75 11.5C5.75 12.6007 6.01345 13.6398 6.48072 14.5578L5 19L9.71819 17.6519C10.5664 18.0361 11.5082 18.25 12.5 18.25Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+              </svg>
+              <h2>Data’s cool. Hackers aren’t.</h2>
+              <p>Smart insights, slick UX, and security so tight even we need a pass.</p>
+              <a href="/SoftwareServices" target="_blank">Next →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section3">
+
+      <div class="container-section3">
+        <div class="rtlcard light-card">
+          <p class="subheading">FRONT-END DIGITAL DESIGN</p>
+          <h2 class="title">RTL brilliance, zero drama</h2>
+          <p class="description">
+            We turn wild ideas into silicon-ready RTL. Custom micro architecture, clean code, and
+            power-smart design <br> — no headaches, just results.
+          </p>
+          <a href="/DigitalDesignServices" target="_blank" class="link">Discover →</a>
+        </div>
+
+        <!-- Right Card -->
+        <div class="fgpacard dark-card">
+          <p class="subheading">DESIGN VERIFICATION — <br>FPGA & VERIFICATION</p>
+          <h2 class="title">
+            We break, debug, and validate so your chip shines.<br>
+            FPGA design, testbenches, and coverage <br> —handled with flair.
+          </h2>
+          <a href="/DigitalVerificationServices" target="_blank" class="link">Explore →</a>
+        </div>
+        <div class="softwarecard light-card">
+          <p class="subheading">SOFTWARE R&D SERVICES</p>
+          <h2 class="title">Future tech, no fiction</h2>
+          <p class="description">
+            From embedded to cloud, 5G to IoT — we turn next-gen ideas into real-world software. Smart code, fast ships,
+            and zero fluff <br> — just products people actually use.
+          </p>
+          <a href="/SoftwareServices" class="link">More →</a>
+        </div>
+
+        <!-- Right Card -->
+        <div class="dftcard dark-card">
+          <p class="subheading">DFT —<br>Chips that test themselves (almost)</p>
+          <h2 class="title">
+            We bake test logic right into your silicon—DFT planning, MBIST, ATPG, the whole shebang. Faster debug, lower
+            test time, and zero surprises on tape-out day.
+          </h2>
+          <a href="/DftServices" target="_blank" class="link">See →</a>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="section4">
+      <section class="faq-section">
+        <p class="label">FAQ: Navigating the Delancey Maze</p>
+        <h2>Your questions, simplified.</h2>
+        <p class="intro">Got questions about chip design or digital verification or dft or Software? We’ve got the
+          answers—straight forward
+          and jargon-free. Let’s dive in.</p>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>Is VLSI really that wild?</h3>
+            <p>Absolutely. VLSI is a high-stakes puzzle—tight timelines, tough specs, zero mercy. But with the right
+              crew,
+              it’s more thrill than fear.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How do you tackle RTL design?</h3>
+            <p>We turn ideas into clean, power-smart RTL. No spaghetti, just sharp microarchitecture, protocol wizardry,
+              and seamless integration.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can you handle custom FPGA work?</h3>
+            <p>You bet. We design, debug, and deliver FPGAs that work on real boards—no smoke, just solid results.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How do you verify digital designs?</h3>
+            <p>We stress-test everything. SV-UVM, VIPs, full coverage—your chip behaves before it ever hits silicon.</p>
+          </div>
+          <div class="faq-item">
+            <h3>What’s in your DFT toolkit?</h3>
+            <p>Scan insertion, ATPG, BISTs, and test plans that won’t drive you mad. We make chips testable and
+              yield-ready.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Do you write embedded software?</h3>
+            <p>Absolutely! From bootloaders to full RTOS, we code drivers, firmware, and middleware that actually talk
+              to
+              your hardware.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Build software much?</h3>
+            <p>Oh yeah. We code like caffeine-fueled wizards—no bugs, no drama, just deploy and destroy deadlines.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Test like you mean it?</h3>
+            <p>We bully our code till it cries. If it survives us, it’s ready for the real world to rock onn.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Need brains with your code?</h3>
+            <p>Big brains, bad jokes, and smarter tech. We turn chaos into clarity—with extra AI sauce.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section5">
+        <h1>Master your any imagination into reality with<br> DELANCEY TECHNOLOGIES</h1>
+        <div class="explore-buttons">
+          <a href="mailto:hr@delanceytec.com" class="btn btn-orange">Chat now</a>
+          <button class="btn">Explore</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer">
+      <footer>
+        <p>&copy; 2025 Delancey Tec. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const sections = document.querySelectorAll(".content-section");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        // Remove active from all tabs and sections
+        tabs.forEach(t => t.classList.remove("active"));
+        sections.forEach(s => s.classList.remove("active"));
+
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.target).classList.add("active");
+      });
+    });
+
+    // Load the header dynamically
+    fetch("header.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-container").innerHTML = data;
+        })
+        .catch(error => console.error("Error loading header:", error));
+</script>
+
+</body>
+
+</html>

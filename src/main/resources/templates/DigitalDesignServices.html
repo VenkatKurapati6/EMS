@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Design</title>
+	<link rel="stylesheet" href="/css/header.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Ancizar+Sans:ital,wght@1,100..1000&family=Bebas+Neue&family=Bungee+Outline&family=Caveat:wght@400..700&family=Codystar:wght@300;400&family=Darumadrop+One&family=Freehand&family=Ga+Maamli&family=Libre+Barcode+39+Extended+Text&family=Luckiest+Guy&family=Noto+Serif+Dives+Akuru&family=Nova+Mono&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Passero+One&family=Poetsen+One&family=Press+Start+2P&family=Rubik+Distressed&family=Rubik+Wet+Paint&family=Share+Tech&family=Sofadi+One&family=Tagesschrift&family=Underdog&family=WDXL+Lubrifont+TC&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        html,
+        body {
+            margin: 0%;
+            padding: 0%;
+            overflow-x: hidden;
+        }
+
+        .ddmain-page {
+            position: relative;
+            max-width: 1200px;
+            margin: auto;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .section-label {
+            color: #000000;
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .load-page-content h1 {
+            font-weight: 100;
+            font-family: "Rubik Distressed", sans-serif;
+            font-size: 4rem;
+            line-height: 1.2;
+        }
+
+        .load-page-content h1 span {
+            display: block;
+            font-family: "Rubik Distressed", sans-serif;
+            font-size: 3.5rem;
+            font-weight: 100;
+        }
+
+        .load-page-content p {
+            font-family: Rubik Wet Paint, sans-serif;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin-inline: auto;
+        }
+
+        .image-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .floating-img {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .i1 {
+            top: 15%;
+            left: 0%;
+            height: 200px;
+            width: 250px;
+        }
+
+        .i2 {
+            z-index: 2;
+            top: 5%;
+            right: 10%;
+        }
+
+        .i3 {
+            width: 400px;
+            bottom: 2%;
+            left: 40%;
+        }
+
+        .i4 {
+            bottom: 0%;
+            left: 15%;
+        }
+
+        .i5 {
+            bottom: 20%;
+            left: 5%;
+        }
+
+        .i6 {
+            top: 7.5%;
+            left: 30%;
+            width: 500px;
+        }
+
+        .i7 {
+            top: 22.5%;
+            right: 0%;
+        }
+
+        .i8 {
+            bottom: 5%;
+            right: 0%;
+            height: 250px;
+            width: 250px;
+        }
+
+        .cards-section {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .cards-section h2 {
+            font-family: "Orbitron";
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .custom-grid1,
+        .custom-grid2,
+        .custom-grid3,
+        .custom-grid4 {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+
+        }
+
+
+        .custom-grid1,
+        .custom-grid3 {
+            grid-template-columns: 60% 40%;
+        }
+
+        .custom-grid2,
+        .custom-grid4 {
+            grid-template-columns: 40% 60%;
+        }
+
+
+        .card {
+            background: #fff;
+            border: 0.5px solid #000000;
+            box-shadow: -3px 3px 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card1 {
+            flex-direction: row;
+
+        }
+
+        .card2 {
+            flex-direction: column;
+        }
+
+        .card1 .text-content {
+            flex: 1;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card1 .card-image,
+        .card2 .card-image {
+            flex: 1;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text-content {
+            padding: 1rem;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .cards-section .text-content h3 {
+            font-family: "Tagesschrift";
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .cards-section .text-content p {
+            font-family: "Oswald";
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .architecture1 {
+            display: flex;
+            align-items: left;
+        }
+
+
+        .designflow-section {
+            max-width: 100vw;
+            height: 100%;
+            margin: auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .designflow-section h2 {
+            font-family: "Bungee Outline";
+            font-size: 10rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .custom-grid5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .custom-grid5 .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 40px 150px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: flex;
+            height: 450px;
+        }
+
+        .custom-grid5 .card .img {
+            height: 250px;
+            width: 100%;
+        }
+
+        .custom-grid5 .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .custom-grid5 .text-content {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .custom-grid5 .icon {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .custom-grid5 .text-content h3 {
+            font-family: "Ancizar Sans";
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .custom-grid5 .text-content p {
+            font-family: "Sofadi One";
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        @media screen and (max-width: 1024px) {
+
+            .section-label{
+                text-align: center;
+                top:140px;
+                left:40px;
+            }
+            .custom-grid5 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .custom-grid5 .card {
+                height: 380px;
+            }
+
+            .designflow-section h2 {
+                font-size: 8rem;
+            }
+            
+
+        }
+
+        @media screen and (max-width: 600px) {
+            .custom-grid5 {
+                grid-template-columns: 1fr;
+            }
+
+            .custom-grid5 .card {
+                height: 360px;
+            }
+
+            .custom-grid5 .card .img {
+                height: 180px;
+            }
+
+            .designflow-section h2 {
+                font-size: 4.5rem;
+            }
+            .reverse{
+                flex-direction: column-reverse;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ddmain-page {
+                flex-direction: column;
+                height: auto;
+                padding: 3rem 1rem;
+            }
+
+            .load-page-content h1 {
+            margin: 50% 0 0 0;
+                font-size: 2.5rem;
+            }
+
+            .load-page-content h1 span {
+                font-size: 2rem;
+            }
+
+            .image-grid {
+                display: none;
+                /* Hide floating images on smaller screens for performance and clarity */
+            }
+
+            .cards-section {
+                padding: 0 1rem;
+            }
+
+            .custom-grid1,
+            .custom-grid2,
+            .custom-grid3,
+            .custom-grid4 {
+                grid-template-columns: 1fr !important;
+                /* Stack cards vertically */
+            }
+
+            .card1 {
+                flex-direction: column;
+            }
+
+            .reverse{
+                flex-direction: column-reverse;
+            }
+            .card img {
+                height: auto;
+            }
+
+            .text-content h3 {
+                font-size: 1rem;
+            }
+
+            .text-content p {
+                font-size: 0.9rem;
+            }
+
+            .icon {
+                font-size: 2rem;
+            }
+
+            .designflow-section h2 {
+                font-size: 6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .load-page-content h1 {
+                font-size: 2rem;
+            }
+
+            .load-page-content h1 span {
+                font-size: 1.5rem;
+            }
+
+            .load-page-content p {
+                font-size: 1rem;
+            }
+
+            .designflow-section h2 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .load-page-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .load-page-content h1 span {
+                font-size: 1.2rem;
+            }
+
+            .load-page-content p {
+                font-size: 0.9rem;
+            }
+
+            .text-content h3 {
+                font-size: 0.95rem;
+            }
+
+            .text-content p {
+                font-size: 0.85rem;
+            }
+
+            .icon {
+                font-size: 1.8rem;
+            }
+
+            .designflow-section h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+       
+
+    </style>
+</head>
+
+<body>
+    <div class="digital-design-main-section">
+        <div class="navbar-container" id="navbar-container"></div>
+        <div class="ddmain-page">
+            <div class="section-label">Digital Design Services @ Delancey</div>
+            <div class="image-grid">
+                <img src="images/logic synthesis.jpg" class="floating-img i1" />
+                <img src="images/vlsipersonworking.avif" class="floating-img i2" />
+                <img src="images/fgpa&verification.jpg" class="floating-img i3" />
+                <img src="images/services-homepage2.avif" class="floating-img i4" />
+                <img src="images/TeamPlanning.avif" class="floating-img i5" />
+                <img src="images/VlsiChiponFloor.avif" class="floating-img i6" />
+                <img src="images/datapackages.png" class="floating-img i7" />
+                <img src="images/boardsonbench.avif" class="floating-img i8" />
+            </div>
+
+            <div class="load-page-content">
+                <h1>Innovate your next <br><span> VLSI breakthrough</span></h1>
+                <p>From concept to silicon– we turn your VLSI ideas into working reality.</p>
+            </div>
+        </div>
+
+        <div class="cards-section">
+            <h2>DELANCEY Build ASICs That Just Work—Beautifully</h2>
+
+            <div class="custom-grid1 ">
+                <div class="card large card1 c1 reverse">
+                    <div class="text-content">
+                        <span class="icon">💭</span>
+                        <h3>Architecture to Microarchitecture: The Brainstorm to Blueprint</h3>
+                        <p>We turn big ideas into detailed design specs—mapping high-level thinking into low-level
+                            logic, all without the migraines</p>
+                    </div>
+                    <div class="card-image">
+                        <img src="images/Placement of components.avif" alt="Architecture" class="img i1">
+                    </div>
+                </div>
+
+                <!-- 40% top right -->
+                <div class="card small card2 c2 ">
+                    <div class="card-image">
+                        <img src="images/RTLCoding.png" alt="RTL Coding">
+                    </div>
+                    <div class="text-content">
+                        <span class="icon">&#128450;</span>
+                        <h3>RTL Coding That Actually Works</h3>
+                        <p>From functions to fault coverage, our RTL coding ensures your chip behaves like it read the
+                            manual—DFT features included.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="custom-grid2">
+
+                <!-- 40% bottom left -->
+                <div class="card small card2 c3 ">
+                    <div class="card-image">
+                        <img src="images/IPintegration.png" alt="Synthesis">
+                    </div>
+                    <div class="text-content">
+                        <span class="icon">&#10004;</span>
+                        <h3>IP Integration Without the Headaches</h3>
+                        <p>Plug, play, and perfect. We integrate IPs like PCIe, DDR, or even your cousin’s proprietary
+                            block—lint-free and drama-free.</p>
+                    </div>
+                </div>
+
+                <!-- 40% bottom right -->
+                <div class="card large card1 c4">
+                    <div class="card-image">
+                        <img src="images/synthesis with smart.png" alt="GDSII">
+                    </div>
+                    <div class="text-content">
+                        <span class="icon">❄️</span>
+                        <h3>Synthesis with Smarts</h3>
+                        <p>We don’t just synthesize—we optimize. Area, power, and timing all get VIP treatment before
+                            they reach your signoff gates.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-grid3">
+                <div class="card large card1 c5 reverse">
+                    <div class="text-content">
+                        <span class="icon">&#128030;</span>
+                        <h3>Linting & CDC That Catches the Sneaky Stuff</h3>
+                        <p>Our lint and CDC checks act like chip detectives—sniffing out bugs and bad handshakes before
+                            they cause silicon chaos.</p>
+                    </div>
+                    <div class="card-image">
+                        <img src="images/linting and cdc.png" alt="Architecture" class="img i1">
+                    </div>
+                </div>
+
+                <!-- 40% top right -->
+                <div class="card small card2 c6">
+                    <div class="card-image">
+                        <img src="images/dftwith 0 loose ends.png" alt="RTL Coding">
+                    </div>
+                    <div class="text-content">
+                        <span class="icon">&#10008;</span>
+                        <h3>DFT with Zero Loose Ends</h3>
+                        <p>Scan chains? Boundary scan? We do it all. Our DFT ensures your design doesn’t just work, but
+                            talks back during test time.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="custom-grid4">
+
+                <!-- 40% bottom left -->
+                <div class="card small card2 c7">
+                    <div class="card-image">
+                        <img src="images/low power high praise.png" alt="Synthesis">
+                    </div>
+                    <div class="text-content">
+                        <span class="icon">&#9889;</span>
+                        <h3>Low Power, High Praise</h3>
+                        <p>We squeeze every milliWatt—without compromising performance. Because who doesn’t want a cool
+                            chip in both senses?</p>
+                    </div>
+                </div>
+
+                <!-- 40% bottom right -->
+                <div class="card large card1 c8">
+                    <div class="card-image">
+                        <img src="images/protocol support.png" alt="GDSII" style="object-fit:fill">
+                    </div>
+                    <div class="text-content">
+                        <span class="icon">&#127760;</span>
+                        <h3>Protocol Support That Speaks Your Language</h3>
+                        <p>PCIe, Ethernet, OCP, WLAN, CPUs—you name it, we speak it fluently. Multilingual, but strictly
+                            digital.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="designflow-section">
+            <h2>DELANCEY'S VLSI design flow</h2>
+
+            <div class="custom-grid5">
+                <div class="card">
+                    <div class="img">
+                        <img src="images/vlsiPlans.avif" alt="Architecture" />
+                    </div>
+                    <div class="text-content">
+                        <span class="icon">&#128279;</span>
+                        <h3>Logic Synthesis that Delivers</h3>
+                        <p>We take your high-level RTL and turn it into a polished, timing-optimized netlist. Clean,
+                            efficient, and ready for silicon — no extra drama, just results.</p>
+                    </div>
+                </div>
+
+                <div class="card reverse">
+
+                    <div class="text-content">
+                        <span class="icon">👤</span>
+                        <h3>Floorplanning Like a Pro</h3>
+                        <p>We map out your VLSI design with hierarchical block placement that’s clean, scalable, and
+                            optimized for future growth — because great chips need solid layouts.</p>
+                    </div>
+                    <div class="img">
+                        <img src="images/FloorPlanning-in-VLSI.jpg" alt="RTL Coding" />
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="img">
+                        <img src="images/vlsipersonworking.avif" alt="Synthesis" />
+                    </div>
+                    <div class="text-content">
+                        <span class="icon">✔️</span>
+                        <h3>Synthesis That Sharpens Every Nanosecond</h3>
+                        <p>From timing constraints and optimization to static timing analysis, we fine-tune placement
+                            and update power and clock plans—ensuring every nanosecond counts.</p>
+                    </div>
+                </div>
+
+                <div class="card reverse">
+
+                    <div class="text-content">
+                        <span class="icon">&#128076;</span>
+                        <h3>Block-Level Layout That Fits Perfectly</h3>
+                        <p>We handle complete placement and routing of every block—so everything clicks into place like
+                            VLSI LEGO.</p>
+                    </div>
+                    <div class="img">
+                        <img src="images/Layout-diagram-of-test-chip.jpg" alt="Block Layout" />
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="img">
+                        <img src="images/ASIC-chips.jpg" alt="GDSII" />
+                    </div>
+                    <div class="text-content">
+                        <span class="icon">❄️</span>
+                        <h3>VLSI-Level Layout That Seals the Deal</h3>
+                        <p>We integrate all design blocks seamlessly, place and route them with precision, and wrap it
+                            all up into a clean, ready-for-fab GDSII.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+         fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+    </script>
+</body>
+
+</html>

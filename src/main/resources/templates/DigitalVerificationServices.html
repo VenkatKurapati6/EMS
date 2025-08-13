@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Verification Services @ Delancey</title>
+	<link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Ancizar+Sans:ital,wght@1,100..1000&family=Bebas+Neue&family=Bungee+Outline&family=Caveat:wght@400..700&family=Codystar:wght@300;400&family=Darumadrop+One&family=Freehand&family=Fuzzy+Bubbles:wght@400;700&family=Ga+Maamli&family=Libre+Barcode+39+Extended+Text&family=Luckiest+Guy&family=Noto+Serif+Dives+Akuru&family=Nova+Mono&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Passero+One&family=Poetsen+One&family=Press+Start+2P&family=Rubik+Distressed&family=Rubik+Wet+Paint&family=Share+Tech&family=Sofadi+One&family=Tagesschrift&family=Underdog&family=WDXL+Lubrifont+TC&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Akronim&family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Bungee+Outline&family=Caveat:wght@400..700&family=Codystar:wght@300;400&family=Darumadrop+One&family=Frijole&family=Fuzzy+Bubbles:wght@400;700&family=Ga+Maamli&family=Jacques+Francois+Shadow&family=Libre+Barcode+39+Extended+Text&family=Luckiest+Guy&family=Nosifer&family=Nova+Mono&family=Orbitron:wght@400..900&family=Passero+One&family=Poetsen+One&family=Press+Start+2P&family=Rubik+Distressed&family=Rubik+Scribble&family=Sofadi+One&family=Tagesschrift&family=Tiny5&family=Tourney:ital,wght@0,100..900;1,100..900&family=Underdog&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            margin: 0%;
+            max-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .section-main {
+            overflow: hidden;
+            height: 100vh;
+            background-color: #000c12;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(0, 100, 150, 0.571), transparent 50%),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
+                repeating-linear-gradient(to right,
+                    rgba(255, 255, 255, 0.08) 0px,
+                    rgba(255, 255, 255, 0.664) 2px,
+                    transparent 2px,
+                    transparent 100px),
+                repeating-linear-gradient(to bottom,
+                    rgba(255, 255, 255, 0.664) 0px,
+                    rgba(255, 255, 255, 0.08) 2px,
+                    transparent 2px,
+                    transparent 100px);
+
+            background-size: cover;
+            background-position: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .section-label {
+            position: absolute;
+            top: 5%;
+            left: 2.5%;
+            font-size: 15px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .heading-main {
+            max-height: 100vh;
+            overflow: hidden;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10% 0 10%;
+        }
+
+        .heading-main h1 {
+            margin-bottom: 1rem;
+            text-align: justify;
+            color: #6fcfff;
+            font-size: 4rem;
+            font-family: "Nova Mono";
+            text-align: center;
+            display: inline-block;
+            transform: translateY(80px);
+            transition: all 0.5s ease-out;
+            word-wrap: break-word;
+        }
+
+        .heading-main p {
+            text-align: justify;
+            font-size: 27px;
+            margin-left: 15%;
+            font-family: "Darumadrop One", "orbitron", "Share Tech";
+            transform: translateY(80px);
+            transition: all 0.5s ease-out 0.2s;
+        }
+
+        .visible h1,
+        .visible p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section2 {
+            height: 100vh;
+            color: #ffffff;
+            background-color: #000000;
+            display: flex;
+
+        }
+
+        .about-container {
+            margin: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-direction: row;
+        }
+
+
+        .content-about-delancey h3 {
+            font-family: "Underdog", system-ui, sans-serif;
+            flex: 1;
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-about-delancey p {
+            margin: 2%;
+            font-family: "Passero One", system-ui;
+            text-align: justify;
+            font-size: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .about-container img {
+            object-fit: cover;
+            height: 00%;
+            width: 100%;
+            border-radius: 5%;
+        }
+
+        .section3 {
+            color: #001201;
+            height: 100vh;
+            margin: 0 5%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .section3 h1 {
+            font-family: "Orbitron", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 9.5rem;
+            line-height: 1.2;
+        }
+
+        .section3 p {
+            font-family: "Tagesschrift", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            position: absolute;
+            left: 65%;
+            bottom: 8%;
+            font-size: 3rem;
+        }
+
+
+
+        .video-wrapper,
+        .video-wrapper-section5 {
+            position: absolute;
+            top: -5%;
+            right: 5%;
+            width: 250px;
+            height: auto;
+            z-index: 0;
+            transform: rotate(-35deg);
+            transform-origin: top right;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .video-wrapper-section5 {
+            right: 10%;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+
+
+        .section5 {
+            background-color: #000000;
+            color: #ffffff;
+            height: 100vh;
+            padding: 0 5%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .section5 h1 {
+            font-family: "Orbitron", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 9.5rem;
+            line-height: 1.2;
+            z-index: 10;
+        }
+
+        .section5 p {
+            font-family: "Tagesschrift", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            position: absolute;
+            left: 65%;
+            bottom: 8%;
+            font-size: 3rem;
+        }
+
+        .section4 {
+            height: auto;
+            background-color: rgb(255, 255, 255);
+
+        }
+
+        .process {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 60px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 60px;
+        }
+
+        .timeline-marker {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 0 8px white;
+        }
+
+        .timeline-marker i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            border: 1px solid #e5e7eb;
+        }
+
+
+        .timeline-content h3 {
+            font-family: "Poetsen One", 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .timeline-features {
+            list-style: none;
+        }
+
+        .timeline-features li {
+            color: #000000;
+            margin-bottom: 8px;
+            position: relative;
+            font-family: "share tech";
+        }
+
+        .timeline-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .section6 {
+            background-color: #000000;
+            margin: 0 auto;
+            padding: 2rem 3rem;
+            -webkit-font-smoothing: antialiased;
+            transform: translateZ(0);
+
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            height: 18rem;
+            perspective: 1000px;
+            border-radius: 0.75rem;
+            animation: fadeInUp 0.5s ease forwards;
+
+            transform: translateZ(0);
+            opacity: 0;
+        }
+
+        .feature-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .feature-card:hover .feature-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .feature-card-front,
+        .feature-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            background: #fff;
+            box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.1);
+            transform-style: preserve-3d;
+            will-change: transform;
+            display: flex;
+            flex-direction: column;
+            transform: translateZ(0);
+            justify-content: space-between;
+            backface-visibility: hidden;
+            box-sizing: border-box;
+        }
+
+        .feature-card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+        }
+
+
+        .card-icon {
+            font-size: 4rem;
+            margin: 0 0 1rem 2rem;
+        }
+
+
+        .card-title {
+            font-size: 1.75rem;
+            font-family: "Ga Maamli", system-ui;
+            font-weight: 400;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            font-family: "Fuzzy Bubbles", system-ui, sans-serif;
+            color: #3b3d40;
+            flex-grow: 1;
+            font-size: 1.1rem;
+        }
+
+        .back-title {
+            font-size: 1.75rem;
+            font-family: "Ga Maamli";
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            font-size: 0.875rem;
+            color: #111827;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .feature-list li {
+            font-size: 1rem;
+            font-weight: 900;
+            font-family: "Fuzzy Bubbles", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .feature-list li::before {
+            content: "•";
+            margin-right: 0.5rem;
+            color: inherit;
+        }
+
+        .card-indigo .card-icon,
+        .card-indigo .back-title {
+            color: #4F46E5;
+        }
+
+        .card-green .card-icon,
+        .card-green .back-title {
+            color: #10B981;
+        }
+
+        .card-purple .card-icon,
+        .card-purple .back-title {
+            color: #8B5CF6;
+        }
+
+        .card-red .card-icon,
+        .card-red .back-title {
+            color: #EF4444;
+        }
+
+        .card-yellow .card-icon,
+        .card-yellow .back-title {
+            color: #F59E0B;
+        }
+
+        .card-blue .card-icon,
+        .card-blue .back-title {
+            color: #3B82F6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            z-index: 10;
+            padding: 20px;
+            font-size: 0.8rem;
+        }
+  @media (max-width :1024px) {
+            .heading-main {
+                margin: 5px;
+            }
+
+            .heading-main h1 {
+                font-size: 3rem;
+            }
+
+            .heading-main p {
+                font-size: 20px;
+                margin-right: 7%;
+            }
+
+            .section2{
+                height: auto;
+            }
+            .section3 {
+                margin: 5%;
+            }
+
+            .section3 h1 {
+                padding-top: 10rem;
+                font-size: 7.5rem;
+                line-height: 1.5;
+            }
+
+            .section3 p {
+                bottom: 5%;
+                left: 55%;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .section5 h1 {
+                padding-top: 2rem;
+                font-size: 8.5rem;
+                line-height: 1.5;
+            }
+            .video-wrapper{
+                top: -10%;
+                width: 200px;
+            }
+
+
+
+            .card-icon {
+                font-size: 2rem;
+            }
+
+            .card-title {
+                font-size: 1.25rem;
+            }
+
+            .card-text {
+                font-size: 1rem;
+            }
+
+        }
+
+        @media (max-width :824px) {
+            .heading-main {
+                margin: 5px;
+            }
+
+            .heading-main h1 {
+                font-size: 2.5rem;
+            }
+
+            .heading-main p {
+                font-size: 20px;
+                margin-right: 5%;
+            }
+            .section2{
+                height: auto;
+            }
+
+            .section3 h1 {
+                font-size: 7rem;
+                line-height: 1.5;
+            }
+
+            .section3 p {
+                bottom: 5%;
+                left: 55%;
+            }
+
+            .video-wrapper {
+                top: 3%;
+                right: 10%;
+                width: 200px;
+            }
+
+
+            .video-wrapper-section5 {
+                top: 5%;
+                right: 10%;
+            }
+
+            .section5 h1 {
+                padding-top: 10rem;
+                font-size: 7rem;
+                line-height: 1.5;
+            }
+
+            .section5 p {
+                bottom:5%;
+                left: 55%;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card-title {
+                font-size: 1.75rem;
+            }
+
+            .card-text {
+                font-size: 1.125rem;
+            }
+
+            .feature-list {
+                font-size: 1rem;
+            }
+
+        }
+
+        @media (max-width :640px) {
+            .heading-main {
+                margin: 5px;
+            }
+
+            .heading-main h1 {
+                font-size: 3rem;
+                margin-bottom: 5%;
+            }
+
+            .heading-main p {
+                font-size: 30px;
+                margin-right: 5%;
+                text-align: justify;
+            }
+
+            .about-container {
+                flex-direction: column;
+                margin: 10px;
+            }
+
+            .section2{
+                height: auto;
+            }
+            .content-about-delancey h3 {
+                font-size: 4rem;
+            }
+
+            .about-container img {
+                height: auto;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section3 h1 {
+                padding-top: 15rem;
+                font-size: 4.5rem;
+            }
+
+            .section3 p {
+                bottom:5%;
+                left: 35%;
+                font-size: 2rem;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                margin-right: 10px;
+                text-align: right;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 10px;
+            }
+
+            .section5 h1 {
+                padding-top: 20rem;
+                font-size: 4.5rem;
+            }
+
+            .section5 p {
+                bottom: 5%;
+                left: 35%;
+                font-size: 2rem;
+            }
+
+            .video-wrapper {
+                top: 10%;
+                right: 30%;
+                width: 150px;
+
+            }
+
+            .video-wrapper-section5 {
+                top: -10%;
+                right: 40%;
+                width: 300px;
+
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+         @media (max-width:540px) {
+            .section3 h1 {
+                padding-top: 15rem;
+                font-size: 3.8rem;
+            }
+
+        }
+        @media (max-width :424px) {
+            .heading-main {
+                margin: 5px;
+            }
+
+            .heading-main h1 {
+                font-size: 3rem;
+            }
+
+            .heading-main p {
+                font-size: 20px;
+                margin: 0 2% 0 3%;
+            }
+
+            .about-container {
+                flex-direction: column;
+                margin: 10px;
+            }
+
+            .content-about-delancey h3 {
+                font-size: 3rem;
+            }
+
+            .content-about-delancey p {
+                font-size: 1rem;
+            }
+
+            .about-container img {
+                height: auto;
+                width: 100%;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section3 h1 {
+                padding-top: 20rem;
+                font-size: 3.25rem;
+            }
+
+            .video-wrapper{
+                top: 5%;
+                right:40%;
+                width: 200px;
+            }
+            .section3 p {
+                top: 90%;
+                left: 35%;
+                font-size: 2rem;
+            }
+
+            .section5 h1 {
+                padding-top: 20rem;
+                font-size: 3.75rem;
+            }
+
+            .section5 p {
+                bottom: 5%;
+                left: 35%;
+                font-size: 2rem;
+            }
+
+        }
+        @media (max-width :350px) {
+            .section-label{
+                top:20%;
+                padding-left: 30px;
+            }
+            .heading-main {
+                margin: 10px;
+            }
+
+            .heading-main h1 {
+                font-size: 2rem;
+            }
+
+            .heading-main p {
+                font-size: 20px;
+                margin: 0 2% 0 3%;
+            }
+
+            .about-container {
+                flex-direction: column;
+                margin: 10px;
+            }
+
+            .content-about-delancey h3 {
+                font-size: 3rem;
+            }
+
+            .content-about-delancey p {
+                font-size: 1rem;
+            }
+
+            .about-container img {
+                height: auto;
+                width: 100%;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section3 h1 {
+                padding-top: 20rem;
+                font-size: 2.75rem;
+            }
+
+            .section3 p {
+                top: 85%;
+                left: 35%;
+                font-size: 1.5rem;
+            }
+
+            .section5 h1 {
+                padding-top: 20rem;
+                font-size: 2.75rem;
+            }
+
+            .section5 p {
+                top: 80%;
+                left: 35%;
+                font-size: 2rem;
+            }
+            .video-wrapper-section5{
+                top:8%;
+                width: 200px;
+            }
+
+            .section6{
+                padding: 16px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="DV-services">
+
+        <div id="navbar-container"></div>
+        <div class="section-main">
+            <div class="section-label">
+                Digital Verification @ Delancey
+            </div>
+            <div class="heading-main" id="headingAnimate">
+                <h1>Silicon-Ready Verification,<br> Done Right Before Tape-Out</h1>
+                <p>- From TEST PLANNING to full VERIFICATION and VALIDATION, we help you catch bugs early and deliver
+                    reliable, first-silicon success.</p>
+            </div>
+        </div>
+        <div class="section2">
+            <div class="about-container">
+                <div class="content-about-delancey">
+                    <h3>Verification,<br> the Delancey Way</h3>
+                    <p>
+                        At <strong>Delancey</strong>, we don’t just test chips—we stress them out (so your product
+                        doesn’t!).
+                        From system testing to reusable components, we tackle verification at any stage using
+                        <strong>SV-UVM</strong> , <strong> OVM</strong> , and <strong> UPF</strong> that hit 100%
+                        functional and code coverage — no bugs, no guesswork.<br>
+
+                        We dive into complex<strong> SoCs </strong> and<strong> IPs</strong> to hit 100% coverage—no
+                        bugs, no surprises.
+                        Whether it's analog, digital, or some wild third-party IP, we make it all work.
+                        First time. Every time.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="images/planning vlsi on chart.avif" alt="Delanceytech illustration" />
+                </div>
+            </div>
+        </div>
+
+        <div class="section3">
+            <h1>Design<br>Verification<br>Process</h1>
+            <p> &mdash; of Delancey</p>
+            <div class="video-wrapper" id="videoWrapper3">
+                <video id="video3" muted playsinline>
+                    <source src="/videos/white-stamp.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="section4">
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Identification & Preparation</h3>
+                        <ul class="timeline-features">
+                            <li>At Delancey, Verification kicks off with the spec—no waiting around! &#9665;</li>
+                            <li>Ensures everything’s testable so test engineers can start planning early. &#9665;</li>
+                            <li>Specs change? Loop in the verification team. &#9665;</li>
+                            <li>Then it’s all about picking the right strategy, tools, and resources. &#9665;</li>
+                            <li>Finally, the plan gets a team review to iron out any kinks before go-time. &#9665; </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Planning</h3>
+
+                        <ul class="timeline-features">
+                            <li>&#9655; At Delancey, verification planning runs in parallel with design — right from the
+                                start</li>
+                            <li>&#9655; As designs change, so does the plan—no dust allowed! </li>
+                            <li>&#9655; Define scope, draft plan, lock milestones—minimize risk early.</li>
+                            <li>&#9655; Tools, environment, and strategy locked in—test-ready from the start. </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Development</h3>
+
+                        <ul class="timeline-features">
+                            <li>At Delancey, test cases grow with the SDLC—step by step. &#9665; </li>
+                            <li>We pick the best test methods to keep things sharp and smart. &#9665; </li>
+                            <li>Clear, simple, and fully verifiable—built for precision, not guesswork. &#9665;</li>
+                            <li>Why redo work? At Delancey, we chain tests—less time, more wins! &#9665;</li>
+                            <li>We cut verification time by developing Sequential runs + reused outputs = faster
+                                verification! &#9665;</li>
+                            <li>Test cases linked to design inputs — every requirement covered, every output verified.
+                                &#9665;</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Execution</h3>
+
+                        <ul class="timeline-features">
+                            <li>&#9655; At Delancey we Built early, run precisely—fully aligned for trusted results.
+                            </li>
+                            <li>&#9655; If something goes off-script or needs tweaking, we document it, fix it, and get
+                                it approved—no loose ends! </li>
+                            <li>&#9655; Spotted an issue? We log it as a defect—no bugs left behind!</li>
+                            <li>&#9655; Ensures all design inputs from the test plan are verified and helps track the
+                                pass ratio.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Reporting</h3>
+
+                        <ul class="timeline-features">
+                            <li>At Delancey, Each phase ends with a check, a report, and a little victory dance. &#9665;
+                            </li>
+                            <li>Our report tells the whole story—what we tested, what passed, what didn’t, and how it
+                                was managed. No secrets here! &#9665;</li>
+                            <li>We map requirements to test results to make sure everything’s covered and nothing’s
+                                missed. &#9665; </li>
+                            <li>Reviews wrap it up—checked, approved, and good to go! &#9665;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section5">
+            <h1>Design<br>Validation<br>Process</h1>
+            <p> &mdash; of Delancey</p>
+            <div class="video-wrapper-section5" id="videoWrapper5">
+                <video id="video5" muted playsinline>
+                    <source src="/videos/black-stamp.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="section6">
+            <div class="cards-grid">
+                <div class="feature-card card-indigo">
+                    <div class="feature-card-inner">
+                        <div class="feature-card-front">
+                            <div class="card-icon"><i class="fas fa-clone"></i></div>
+                            <h3 class="card-title">Validated by Similar Designs</h3>
+                            <p class="card-text">We compare with proven systems to validate updates and standard
+                                designs—smart, efficient, and already road-tested.</p>
+                        </div>
+                        <div class="feature-card-back">
+                            <h3 class="back-title">Design Once, Win Twice!</h3>
+                            <ul class="feature-list">
+                                <li>Saves time with ready-to-use designs.</li>
+                                <li>Lowers risk when making changes.</li>
+                                <li>Keeps new systems consistent and reliable.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card card-green">
+                    <div class="feature-card-inner">
+                        <div class="feature-card-front">
+                            <div class="card-icon"><i class="fas fa-eye"></i></div>
+                            <h3 class="card-title">Show & Tell Validation</h3>
+                            <p class="card-text">We validate functionality through demos and careful inspection—no
+                                guesswork, just proof.</p>
+                        </div>
+                        <div class="feature-card-back">
+                            <h3 class="back-title">Proof Through Demo & Inspection</h3>
+                            <ul class="feature-list">
+                                <li>Live demonstrations show real results.</li>
+                                <li>No shortcuts, just working systems.</li>
+                                <li>We show it, not just say it.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card card-purple">
+                    <div class="feature-card-inner">
+                        <div class="feature-card-front">
+                            <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+                            <h3 class="card-title">Smart Sim & Math Magic</h3>
+                            <p class="card-text">From simulations to mathematical models, we analyze designs to predict
+                                performance—before anything hits the bench.</p>
+                        </div>
+                        <div class="feature-card-back">
+                            <h3 class="back-title">Designs That Think Ahead</h3>
+                            <ul class="feature-list">
+                                <li>Simulations show what to expect.</li>
+                                <li>Math predicts system behavior.</li>
+                                <li>We test before building.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card card-red">
+                    <div class="feature-card-inner">
+                        <div class="feature-card-front">
+                            <div class="card-icon"><i class="fas fa-vial"></i></div>
+                            <h3 class="card-title">Final Test, Real Proof</h3>
+                            <p class="card-text">Final designs are tested to ensure they perform exactly as planned—no
+                                surprises.</p>
+                        </div>
+                        <div class="feature-card-back">
+                            <h3 class="back-title">Final Design, Fully Tested</h3>
+                            <ul class="feature-list">
+                                <li>Tests on the actual system.</li>
+                                <li>Design performance verified.</li>
+                                <li>Zero surprises before launch.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card card-yellow">
+                    <div class="feature-card-inner">
+                        <div class="feature-card-front">
+                            <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                            <h3 class="card-title">Proof on Paper</h3>
+                            <p class="card-text">Every plan, test, and result is documented—because solid validation
+                                needs a
+                                solid paper trail.</p>
+                        </div>
+                        <div class="feature-card-back">
+                            <h3 class="back-title">Validation = Documented Proof</h3>
+                            <ul class="feature-list">
+                                <li>Everything is recorded.</li>
+                                <li>Complete test history.</li>
+                                <li>Documentation seals validation.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card card-blue">
+                    <div class="feature-card-inner">
+                        <div class="feature-card-front">
+                            <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
+                            <h3 class="card-title">Same Same (But Documented)</h3>
+                            <p class="card-text">Using equivalent products? We document similarities and differences to
+                                keep
+                                validation accurate.</p>
+                        </div>
+                        <div class="feature-card-back">
+                            <h3 class="back-title">Equivalent Products? Prove It.</h3>
+                            <ul class="feature-list">
+                                <li>Show the match to original.</li>
+                                <li>Log the differences.</li>
+                                <li>Keep validation transparent.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <footer>
+                <p>&copy; 2025 Delancey Tec. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar-container").innerHTML = data;
+            })
+            .catch(error => console.error("Error loading header:", error));
+        // Animate heading
+        const headingTarget = document.getElementById("headingAnimate");
+        const headingObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, { threshold: 0.2 });
+        headingObserver.observe(headingTarget);
+
+        // Utility to observe video on 80% visibility
+        function observeVideo(videoId, wrapperId, sectionSelector) {
+            const video = document.getElementById(videoId);
+            const wrapper = document.getElementById(wrapperId);
+            const section = document.querySelector(sectionSelector);
+            let playedOnce = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Check if 80% of the section is visible
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.5 && !playedOnce) {
+                        wrapper.style.opacity = 1;
+                        video.currentTime = 0;
+                        video.play();
+                        playedOnce = true;
+
+                        // Pause after 4 seconds
+                        setTimeout(() => {
+                            video.pause();
+                        }, 4000);
+                    }
+                });
+            }, { threshold: buildThresholdList(0.01) }); // Fine-grained
+
+            observer.observe(section);
+        }
+
+        // Create detailed threshold list for smoother ratio detection
+        function buildThresholdList(step = 0.05) {
+            const thresholds = [];
+            for (let i = 0; i <= 1.0; i += step) {
+                thresholds.push(i);
+            }
+            return thresholds;
+        }
+
+        observeVideo("video3", "videoWrapper3", ".section3");
+        observeVideo("video5", "videoWrapper5", ".section5");
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, i) => {
+                card.style.animationDelay = `${i * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+
+</html>

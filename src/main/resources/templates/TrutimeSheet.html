@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruTime Sheet</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        html,
+        body {
+            overflow: hidden;
+        }
+
+        .tru-time-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .h1 {
+            padding: 10px;
+            text-align: center;
+            border-radius: 30%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .first-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px auto;
+            max-width: 900px;
+        }
+
+        .dropdown-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .graph-container {
+            width: 100%;
+            max-height: 250px;
+            height: auto;
+
+        }
+
+        .timesheet-container {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timesheet {
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            padding: 10px px;
+            scroll-behavior: smooth;
+            max-width: 100%;
+
+        }
+
+        .day-box {
+            min-width: 165px;
+            padding: 5px;
+            border: 5px solid #8d8989;
+            text-align: center;
+            cursor: pointer;
+            background: #f9f9f9;
+            font-size: 14px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .day-box:hover {
+            background: #0a498b;
+        }
+
+		.disabled-day {
+		    opacity: 1.5;
+		    background-color: #e0e0e0;
+		    cursor: not-allowed;
+		}
+        .input-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+            z-index: 1000;
+            text-align: left;
+            /* Align text to the left */
+        }
+
+        /* Style form labels */
+        .input-form label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        /* Create a flex container for time selection */
+        .time-selection {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        /* Style select and input fields */
+        .input-form select,
+        .input-form input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style buttons */
+        .input-form button {
+            width: 48%;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .input-form button:first-of-type {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .input-form button:last-of-type {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .input-form button:hover {
+            opacity: 0.8;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #666;
+			
+        }
+	
+
+        .close-button:hover {
+            color: #181616;
+        }
+
+
+        @media (max-width: 600px) {
+            .day-box {
+                min-width: 100px;
+                font-size: 12px;
+                padding: 5px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .graph-container {
+                max-height: 200px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 18px;
+                /* Smaller heading for mobile */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .first-section {
+                flex-direction: column;
+                /* Stack elements on small screens */
+                align-items: flex-start;
+            }
+
+            select {
+                width: 100%;
+                /* Make dropdowns take full width */
+            }
+        }
+
+        /* Make form responsive */
+        @media (max-width: 500px) {
+            .input-form {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .input-form button {
+                width: 100%;
+                /* Full width buttons on mobile */
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tru-time-container">
+        <div class="h1">
+            <h1>Trutime Sheet</h1>
+        </div>
+
+        <div class="first-section">
+			<label for="employeeId">Employee ID:</label>
+			<input type="text" id="employeeId" th:value="${employeeId}" disabled>
+ 
+            <div class="dropdown-container">
+                <select id="monthSelector" th:value="${selectedMonth}" onchange="updateGraph()"></select>
+                <select id="yearSelector" th:value="${selectedYear}" onchange="updateGraph()"></select>
+            </div>
+        </div>
+
+        <div class="graph-container">
+            <canvas id="workGraph"></canvas>
+        </div>
+
+        <div class="timesheet-container">
+            <div class="timesheet" id="timesheet"></div>
+        </div>
+
+		<div class="submit-button">
+			<form action="/timesheet/timesheetSummary" method="get">
+			    <button type="submit">Submit for Approval</button>
+			</form>
+		</div>
+    </div>
+
+    <div class="input-form" id="inputForm">
+        <span class="close-button" onclick="closeForm()">✖</span>
+        <label>Login Time:</label>
+        <div class="time-selection">
+            <select id="loginHour"></select>
+            <select id="loginMinute"></select>
+            <select id="loginAmPm">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+            </select>
+        </div>
+
+        <label>Logout Time:</label>
+        <div class="time-selection">
+            <select id="logoutHour"></select>
+            <select id="logoutMinute"></select>
+            <select id="logoutAmPm">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+            </select>
+        </div>
+
+        <label>Break (mins):</label>
+        <input type="number" id="breakTime" value="0" min="0" oninput="validateBreakTime(this)">
+		
+		<label>Activity Log:</label>
+		<input type="text" id="activityLog"  >
+
+        <button onclick="saveData()">Save</button>
+        <button onclick="closeForm()">Close</button>
+    </div>
+     <script>
+	
+        function beforePrintHandler() {
+            for (let id in Chart.instances) {
+                Chart.instances[id].resize();
+            }
+        }
+		let workData = JSON.parse(localStorage.getItem("workData")) || {};
+        let currentMonth = new Date().toLocaleString('default', { month: 'long' });
+        let currentYear = new Date().getFullYear();
+		
+        const ctx = document.getElementById('workGraph').getContext('2d');
+        let workGraph = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Hours Worked',
+                    data: [],
+                    backgroundColor: ["blue"]
+                }]
+            },
+			
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        ticks: {
+                            stepSize: 1, // Forces the Y-axis to increment by 1
+                            precision: 0,// Ensures no decimals are displayed
+                            callback: function (value) {
+                                return Math.round(value); // Ensure only whole numbers are displayed
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: { autoSkip: false }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                let totalMinutes = Math.round(tooltipItem.raw * 60);
+                                let hh = Math.floor(totalMinutes / 60);
+                                let mm = totalMinutes % 60;
+                                return `${hh}h:${mm.toString().padStart(2, '0')}m`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        function generateDropdowns() {
+            let monthSelector = document.getElementById("monthSelector");
+            let yearSelector = document.getElementById("yearSelector");
+
+            let months = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            // Get the current month and year
+            let currentDate = new Date();
+            let currentMonthIndex = currentDate.getMonth(); // Current month index (0-11)
+            let currentYear = currentDate.getFullYear();    // Current year
+
+            // Clear existing options in the month and year dropdowns
+            monthSelector.innerHTML = '';
+            yearSelector.innerHTML = '';
+
+            // Add years from current year down to 2020
+            for (let year = currentYear; year >= 2024; year--) {
+                let option = document.createElement("option");
+                option.value = year;
+                option.textContent = year;
+                yearSelector.appendChild(option);
+            }
+            
+
+            // Update the month dropdown based on the selected year
+            function updateMonths() {
+                let selectedYear = parseInt(yearSelector.value); // Get the selected year
+
+                // Clear current month options before populating again
+                monthSelector.innerHTML = '';
+
+                if (selectedYear === currentYear) {
+                    // Add months up to the current month if it's the current year
+                    for (let i = 0; i <= currentMonthIndex; i++) {
+                        let option = document.createElement("option");
+                        option.value = months[i];
+                        option.textContent = months[i];
+                        monthSelector.appendChild(option);
+                    }
+                } else {
+                    // Add all months for past years
+                    months.forEach(month => {
+                        let option = document.createElement("option");
+                        option.value = month;
+                        option.textContent = month;
+                        monthSelector.appendChild(option);
+                    });
+                }
+
+                // Set the month to January by default if the year is not the current year
+                if (selectedYear !== currentYear) {
+                    monthSelector.value = "January";
+                } else {
+                    monthSelector.value = months[currentMonthIndex];
+                }
+            }
+
+            // Initially populate the dropdowns
+            updateMonths();
+
+            // Re-populate the months when the year is changed
+            yearSelector.addEventListener('change', function () {
+                updateMonths();
+            });
+
+            // Set default selections
+            yearSelector.value = currentYear;
+            monthSelector.value = months[currentMonthIndex];
+			
+			monthSelector.addEventListener("change", updateGraph);
+			yearSelector.addEventListener("change", updateGraph);
+        }
+		
+		function validateBreakTime(input) {
+		                if (input.value < 0) {
+		                    input.value = Math.abs(input.value); // Convert negative to positive
+		                }
+		                if (isNaN(input.value) || input.value === '') {
+		                    input.value = 0; // Reset if NaN or empty
+		                }
+		            }
+       
+        function getDaysInMonth(month, year) {
+            let monthIndex = new Date(Date.parse(month + " 1, " + year)).getMonth();
+            return new Date(year, monthIndex + 1, 0).getDate();
+        }
+
+        function setMonthDays() {
+            let yearSelector = document.getElementById("yearSelector");
+            let monthSelector = document.getElementById("monthSelector");
+
+            let selectedYear = parseInt(yearSelector.value);
+            let currentDate = new Date();
+            let currentYear = currentDate.getFullYear();
+            let currentMonth = currentDate.toLocaleString('default', { month: 'long' });
+
+            // Change month only when the year is changed, but allow user to select another month after that
+            if (yearSelector.getAttribute("data-last-selected") !== yearSelector.value) {
+                if (selectedYear < currentYear) {
+                    monthSelector.value = "January"; // Default to January for past years
+                } else if (selectedYear === currentYear) {
+                    monthSelector.value = currentMonth; // Default to the current month for the current year
+                }
+                yearSelector.setAttribute("data-last-selected", yearSelector.value);
+            }
+
+            let selectedMonth = monthSelector.value;
+            let daysInMonth = getDaysInMonth(selectedMonth, selectedYear);
+
+            generateDays(daysInMonth, selectedMonth, selectedYear);
+            updateGraph();
+        }
+
+		function generateDays(daysInMonth, selectedMonth, selectedYear, monthData = {}) {
+		    const timesheet = document.getElementById("timesheet");
+		    timesheet.innerHTML = "";
+
+		    const currentDate = new Date();
+		    currentDate.setHours(0, 0, 0, 0); // Strip time
+
+		    const selectedMonthIndex = new Date(Date.parse(`${selectedMonth} 1, ${selectedYear}`)).getMonth();
+
+		    for (let i = 1; i <= daysInMonth; i++) {
+		        const dayBox = document.createElement("div");
+		        dayBox.className = "day-box";
+
+		        const totalHours = monthData[i] || "--hh:mm";
+		        dayBox.innerHTML = `<strong>${i} ${selectedMonth} ${selectedYear}</strong><br><span id="hours-${i}">${totalHours}</span>`;
+
+		        // Get the actual date of this day box
+		        const boxDate = new Date(selectedYear, selectedMonthIndex, i);
+		        boxDate.setHours(0, 0, 0, 0);
+
+		        // Check: allow only if today or earlier
+		        if (boxDate > currentDate) {
+		            dayBox.classList.add("disabled-day");
+		            dayBox.title = "Future date - not allowed";
+		            dayBox.style.cursor = "not-allowed";
+		        } else {
+		            dayBox.onclick = () => openForm(i);
+		        }
+
+		        timesheet.appendChild(dayBox);
+		    }
+		}
+
+        // Event listeners to update days when year or month is changed
+        document.getElementById("yearSelector").addEventListener("change", setMonthDays);
+        document.getElementById("monthSelector").addEventListener("change", setMonthDays);
+
+        function openForm(dayIndex) {
+			
+			const selectedMonth = document.getElementById("monthSelector").value;
+			   const selectedYear = parseInt(document.getElementById("yearSelector").value);
+			   const selectedMonthIndex = new Date(Date.parse(`${selectedMonth} 1, ${selectedYear}`)).getMonth();
+			   const selectedDate = new Date(selectedYear, selectedMonthIndex, parseInt(dayIndex));
+
+			   const today = new Date();
+			   selectedDate.setHours(0, 0, 0, 0);
+			   today.setHours(0, 0, 0, 0);
+
+			   if (selectedDate > today) {
+			       alert("🚫 Cannot open form for a future date.");
+			       return;
+			   }
+            // Reset form fields
+            document.getElementById("loginHour").value = "9";  // Default Login: 9 AM
+            document.getElementById("loginMinute").value = "00";
+            document.getElementById("loginAmPm").value = "AM";
+
+            document.getElementById("logoutHour").value = "6"; // Default Logout: 6 PM
+            document.getElementById("logoutMinute").value = "00";
+            document.getElementById("logoutAmPm").value = "PM";
+
+            document.getElementById("breakTime").value = 0; // Reset break time
+			
+			document.getElementById("activityLog").value =" ";
+
+            // Show the form
+            document.getElementById("inputForm").style.display = "block";
+            document.getElementById("inputForm").setAttribute("data-day", dayIndex);
+        }
+		
+		window.onload = function() {
+			function validateBreakTime(input) {
+			    let value = input.value.trim();  // Remove any spaces
+
+			    // If the input is empty or not a valid number, reset to 0
+			    if (value === "" || isNaN(value) || parseInt(value, 10) < 0) {
+			        input.value = ""; // Clear the field instead of setting it to 0
+			    } else {
+			        input.value = parseInt(value, 10); // Convert to integer
+			    }
+			}
+		    window.validateBreakTime = validateBreakTime; // Make it accessible globally
+		};
+		
+		async function saveData() {
+		    let selectedYear = document.getElementById("yearSelector").value;
+		    let selectedMonth = document.getElementById("monthSelector").value;
+		    let employeeId = document.getElementById("employeeId").value;
+		    let dayIndex = document.getElementById("inputForm").getAttribute("data-day");
+
+		    let loginHour = parseInt(document.getElementById("loginHour").value);
+		    let loginMinute = parseInt(document.getElementById("loginMinute").value);
+		    let loginAmPm = document.getElementById("loginAmPm").value;
+
+		    let logoutHour = parseInt(document.getElementById("logoutHour").value);
+		    let logoutMinute = parseInt(document.getElementById("logoutMinute").value);
+		    let logoutAmPm = document.getElementById("logoutAmPm").value;
+
+		    function convertTo24Hour(hour, minute, amPm) {
+		        if (amPm === "PM" && hour !== 12) hour += 12;
+		        if (amPm === "AM" && hour === 12) hour = 0;
+		        return { hour, minute };
+		    }
+
+		    let { hour: loginH, minute: loginM } = convertTo24Hour(loginHour, loginMinute, loginAmPm);
+		    let { hour: logoutH, minute: logoutM } = convertTo24Hour(logoutHour, logoutMinute, logoutAmPm);
+
+		    let loginTime = new Date(2023, 0, 1, loginH, loginM);
+		    let logoutTime = new Date(2023, 0, 1, logoutH, logoutM);
+
+		    let breakTimeInput = document.getElementById("breakTime");
+		    let breakTime = parseInt(breakTimeInput.value) || 0;
+
+		    if (breakTime < 0 || breakTime > 540) {
+		        alert("Break time must be between 0 and 540 minutes.");
+		        breakTimeInput.value = "";
+		        return;
+		    }
+
+		    if (logoutTime <= loginTime) {
+		        alert("Logout time must be later than login time.");
+		        return;
+		    }
+
+		    let totalMinutesWorked = (logoutTime - loginTime) / (1000 * 60) - breakTime;
+		    let formattedTime = `${Math.floor(totalMinutesWorked / 60)}:${(totalMinutesWorked % 60).toString().padStart(2, '0')}`;
+
+		    let hoursKey = `hours-${selectedMonth}-${selectedYear}`;
+		    let displayHours = JSON.parse(localStorage.getItem(hoursKey)) || {};
+		    let formattedDate = `${selectedYear}-${("0" + (new Date(Date.parse(selectedMonth + " 1, " + selectedYear)).getMonth() + 1)).slice(-2)}-${("0" + dayIndex).slice(-2)}`;
+		    let activityLog = document.getElementById("activityLog").value || "";
+
+		    let timesheetData = {
+		        userId: employeeId,
+		        date: formattedDate,
+		        loginTime: `${loginH.toString().padStart(2, '0')}:${loginM.toString().padStart(2, '0')}`,
+		        logoutTime: `${logoutH.toString().padStart(2, '0')}:${logoutM.toString().padStart(2, '0')}`,
+		        breakMinutes: breakTime,
+		        totalHoursWorked: formattedTime,
+		        activityLog: activityLog
+		    };
+
+		    console.log("🚀 Sending Data:", JSON.stringify(timesheetData));
+
+
+			// Check with backend if timesheet exists
+			let timesheetExists = false;
+			try {
+			    let existsResponse = await fetch(`http://localhost:8080/timesheet/exists?date=${formattedDate}`, {
+			        method: "GET",
+			        credentials: "include"
+			    });
+
+			    if (existsResponse.ok) {
+			        timesheetExists = await existsResponse.json();
+			    }
+			} catch (err) {
+			    console.error("Error checking timesheet existence:", err);
+			}
+
+			let proceed = true;
+			
+			if (timesheetExists) {
+			   proceed = confirm("⚠️ Timesheet for this date already exists. Do you want to update it?");
+			    if (!proceed) {
+			        closeForm();
+			        return;
+			    }
+			}
+
+
+		    if (!proceed) {
+		        closeForm(); // Close the form if the user cancels
+		        return;
+		    }
+
+			let url = "http://localhost:8080/timesheet/saveOrUpdate";
+			let method = "POST";
+
+		    try {
+		        let response = await fetch(url, {
+		            method: method,
+		            headers: {
+		                "Content-Type": "application/json"
+		            },
+		            body: JSON.stringify(timesheetData),
+		            credentials: "include"
+		        });
+
+		        if (response.ok) {
+		            alert(timesheetExists? "✅ Timesheet updated successfully!" : "✅ Timesheet saved successfully!");
+		        } else {
+		            alert("❌ Error saving timesheet.");
+		        }
+		    } catch (error) {
+		        console.error("❌ Server Error:", error);
+		        alert("Error connecting to server.");
+		    }
+
+		    displayHours[dayIndex] = formattedTime;
+		    localStorage.setItem(hoursKey, JSON.stringify(displayHours));
+		    document.getElementById(`hours-${dayIndex}`).innerText = formattedTime;
+
+		    let key = `${selectedMonth}-${selectedYear}`;
+		    if (!workData[key]) workData[key] = {};
+		    workData[key][dayIndex] = formattedTime;
+
+		    updateGraph();
+		    closeForm(); // Close the form after update
+		}
+
+
+		// ✅ Ensure data is loaded when page refreshes
+		document.addEventListener("DOMContentLoaded", () => {
+		    workData = JSON.parse(localStorage.getItem("workData")) || {};
+		});
+
+		function closeForm() {
+		    const form = document.getElementById("inputForm");
+		    if (form) {
+		        form.style.display = "none";  // Hide the form
+		    } else {
+		        console.log("Form not found!");
+		    }
+		}
+		
+		document.addEventListener("DOMContentLoaded", () => {
+		    generateDropdowns(); // Ensure dropdowns are created first
+		    setTimeout(updateGraph, 1000); // Delay to ensure dropdowns exist
+		});
+
+		workData = {}; // only declared once
+
+		async function loadWorkDataAndRenderGraph(userId) {
+		  console.log("📤 Fetching timesheet data from backend...");
+
+		  const selectedMonth = document.getElementById("monthSelector").value;
+		  const selectedYear = document.getElementById("yearSelector").value;
+		  const key = `${selectedMonth}-${selectedYear}`;
+
+		  const endpoint = `/timesheet/${userId}/${selectedYear}-${selectedMonth}`;
+		  console.log("🌐 Fetching data from:", endpoint);
+
+		  try {
+		    const response = await fetch(endpoint);
+		    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+		    const timesheets = await response.json();
+		    console.log("✅ Retrieved Timesheets:", timesheets);
+
+		    workData[key] = timesheets;
+		    localStorage.setItem("workData", JSON.stringify(workData));
+
+		    updateGraph(workData[key]); // your chart update function
+
+		  } catch (error) {
+		    console.error("❌ Error fetching or processing timesheet data:", error);
+		  }
+		}
+
+		document.addEventListener('DOMContentLoaded', () => {
+		    const userId = document.getElementById("employeeId").value;
+		    const selectedMonth = document.getElementById("monthSelector").value;
+		    const selectedYear = document.getElementById("yearSelector").value;
+
+		    loadWorkDataAndRenderGraph(userId, selectedMonth, selectedYear);
+		});
+		window.addEventListener("DOMContentLoaded", () => {
+		  const userId = document.getElementById("employeeId").value; // Thymeleaf populated
+		  workData = {}; // clear old
+		  loadWorkDataAndRenderGraph(userId);
+		});
+
+		function updateGraph() {
+		    let monthDropdown = document.getElementById("monthSelector");
+		    let yearDropdown = document.getElementById("yearSelector");
+		    let userId = document.getElementById("employeeId").value;
+
+		    if (!monthDropdown || !yearDropdown) {
+		        console.error("❌ Month or Year dropdown not found! Retrying in 500ms...");
+		        setTimeout(updateGraph, 500);
+		        return;
+		    }
+
+		    let selectedMonth = monthDropdown.value;
+		    let selectedYear = yearDropdown.value;
+		    let key = `${selectedMonth}-${selectedYear}`;
+		    let monthData = {};
+
+		    const fetchUrl = `/timesheet/${userId}/${selectedYear}-${selectedMonth}`;
+		    console.log("🌐 Fetching data from:", fetchUrl);
+
+		    fetch(fetchUrl)
+		        .then(response => {
+		            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+		            return response.json();
+		        })
+		        .then(data => {
+		            data.forEach(entry => {
+		                const [year, month, day] = entry.date.split("-");
+		                const loopKey = `${getMonthName(parseInt(month))}-${year}`;
+		                const numericDay = parseInt(day);
+
+		                if (!workData[loopKey]) workData[loopKey] = {};
+
+		                const cleanTime = entry.totalHoursWorked?.trim?.();
+		                if (cleanTime) {
+		                    workData[loopKey][numericDay] = cleanTime;
+		                    monthData[numericDay] = cleanTime;
+		                } else {
+		                    console.warn(`⚠️ Missing or invalid totalHoursWorked for ${entry.date}`);
+		                }
+		            });
+
+		            // ✅ Update global workData & draw chart
+		            workData[key] = monthData;
+		            console.log("✅ Cleaned monthData:", monthData);
+		            renderGraph(selectedMonth, selectedYear, monthData);
+					
+					generateDays(getDaysInMonth(selectedMonth, selectedYear), selectedMonth, selectedYear, workData[key]);
+
+			})
+		        .catch(error => {
+		            console.error("❌ Failed to fetch graph data:", error);
+		        });
+		}
+
+
+		function getMonthName(monthIndex) {
+		    const monthNames = [
+		        "January", "February", "March", "April", "May", "June",
+		        "July", "August", "September", "October", "November", "December"
+		    ];
+		    return monthNames[monthIndex - 1];
+		}
+		function convertToDecimal(timeStr) {
+		    const [hours, minutes] = timeStr.split(":").map(Number);
+		    return hours + (minutes / 60);
+		}
+		function calculateTotalHours(login, logout, breakTime) {
+		    // Assume HH:mm format
+		    const [lh, lm] = login.split(":").map(Number);
+		    const [oh, om] = logout.split(":").map(Number);
+		    const [bh, bm] = breakTime.split(":").map(Number);
+
+		    let loginMins = lh * 60 + lm;
+		    let logoutMins = oh * 60 + om;
+		    let breakMins = bh * 60 + bm;
+
+		    let totalWorkedMins = logoutMins - loginMins - breakMins;
+		    let hours = Math.floor(totalWorkedMins / 60);
+		    let mins = totalWorkedMins % 60;
+		    return `${hours}:${mins.toString().padStart(2, "0")}`;
+		}
+
+		
+
+		// Get number of days in a month
+		function getDaysInMonth(month, year) {
+		    return new Date(year, new Date(Date.parse(month + " 1, " + year)).getMonth() + 1, 0).getDate();
+		}
+
+		function parseHoursWorked(timeStr) {
+		    if (typeof timeStr !== 'string') return NaN;
+		    let [hours, minutes] = timeStr.split(":").map(Number);
+		    return hours + (minutes / 60);
+		}
+
+
+			function renderGraph(selectedMonth, selectedYear, monthData) {
+			        let mappedData = {};
+			        const key = `${selectedMonth}-${selectedYear}`;
+
+			        console.log("🔍 workData object from backend:", workData);
+			        console.log(`📅 Selected Month: ${selectedMonth}, Selected Year: ${selectedYear}`);
+			        console.log(`🔍 Checking workData for key: ${key}`);
+
+			        if (typeof monthData === 'object' && Object.keys(monthData).length > 0) {
+			            Object.keys(monthData).forEach(day => {
+			                const hours = parseHoursWorked(monthData[day]);
+			                if (isNaN(hours)) {
+			                    console.warn("⚠️ Skipping invalid entry (could not parse hours):", monthData[day]);
+			                    return;
+			                }
+
+			                mappedData[day] = hours;
+			                console.log(`📅 Processed Entry - Day: ${day}, Hours: ${hours}`);
+			            });
+			        } else {
+			            console.warn("⚠️ No entries or invalid data found.");
+			        }
+
+			        console.log("📊 Mapped Timesheet Data:", mappedData);
+
+			        let labels = [], data = [], maxHours = 0;
+			        let daysInMonth = getDaysInMonth(selectedMonth, selectedYear);
+
+			        for (let i = 1; i <= daysInMonth; i++) {
+			            let date = new Date(`${selectedMonth} ${i}, ${selectedYear}`);
+			            let dayInitial = date.toLocaleDateString('en-US', { weekday: 'short' }).slice(0, 1);
+			            let shortDate = `${i}-${dayInitial}`;
+
+			            labels.push(shortDate);
+			            let hours = mappedData[i] ?? 0;
+			            data.push(hours);
+			            if (hours > maxHours) maxHours = hours;
+			        }
+
+			        console.log("📊 Final Labels:", labels);
+			        console.log("📊 Final Data:", data);
+
+			        workGraph.data.labels = labels;
+			        workGraph.data.datasets[0].data = data;
+			        workGraph.options.scales.y.max = Math.max(maxHours + 1, 10);
+			        workGraph.update();
+			    }
+		
+		// 📅 Month and Year Select Event Listeners
+		document.getElementById("monthSelector").addEventListener("change", function () {
+		    currentMonth = this.value;
+		    setMonthDays();
+		});
+
+		document.getElementById("yearSelector").addEventListener("change", function () {
+		    currentYear = parseInt(this.value);
+		    setMonthDays();
+		});
+
+		
+
+        function populateTimeDropdowns() {
+            let hourDropdowns = [document.getElementById("loginHour"), document.getElementById("logoutHour")];
+            let minuteDropdowns = [document.getElementById("loginMinute"), document.getElementById("logoutMinute")];
+            let amPmDropdowns = [document.getElementById("loginAmPm"), document.getElementById("logoutAmPm")];
+            // Populate hours (1-12)
+            for (let i = 1; i <= 12; i++) {
+                hourDropdowns.forEach(dropdown => {
+                    let option = document.createElement("option");
+                    option.value = i;
+                    option.textContent = i;
+                    dropdown.appendChild(option);
+                });
+            }
+            // Populate minutes (00-59)
+            for (let i = 0; i < 60; i += 1) {
+                let formattedMinute = i.toString().padStart(2, '0');
+                minuteDropdowns.forEach(dropdown => {
+                    let option = document.createElement("option");
+                    option.value = formattedMinute;
+                    option.textContent = formattedMinute;
+                    dropdown.appendChild(option);
+                });
+            }
+            // ✅ Set Default Time
+            document.getElementById("loginHour").value = "9";  // Default Login: 9 AM
+            document.getElementById("loginMinute").value = "00";
+            document.getElementById("loginAmPm").value = "AM";
+
+            document.getElementById("logoutHour").value = "6"; // Default Logout: 6 PM
+            document.getElementById("logoutMinute").value = "00";
+            document.getElementById("logoutAmPm").value = "PM";
+        }
+        function convertTo24Hour(hour, minute, period) {
+            if (period === "PM" && hour !== 12) hour += 12;
+            if (period === "AM" && hour === 12) hour = 0;
+            return { hour, minute };
+        }
+        populateTimeDropdowns();
+        generateDropdowns();
+        setMonthDays();
+		
+		document.addEventListener("DOMContentLoaded", function () {
+		    let employeeId = document.getElementById("employeeId").value;
+		    let currentMonth = new Date().toLocaleString('default', { month: 'long' });
+		    let currentYear = new Date().getFullYear();
+		});
+			
+		document.addEventListener("DOMContentLoaded", function () {
+		    // Attach event listeners to all date cells
+		    let dateCells = document.querySelectorAll(".timesheet-date");
+
+		    dateCells.forEach(cell => {
+		        cell.addEventListener("click", function () {
+		            let selectedDate = cell.getAttribute("data-date");
+		            let userId = cell.getAttribute("data-user-id"); // Assuming userId is stored in an attribute
+
+		            if (confirm(`Do you want to update the timesheet for ${selectedDate}?`)) {
+		                // Enable the form fields for user input
+		                document.getElementById("loginTime").disabled = false;
+		                document.getElementById("logoutTime").disabled = false;
+		                document.getElementById("breakMinutes").disabled = false;
+		                document.getElementById("totalHoursWorked").disabled = false;
+		                document.getElementById("activityLog").disabled = false;
+
+		                // Set hidden fields for userId and date
+		                document.getElementById("hiddenUserId").value = userId;
+		                document.getElementById("hiddenDate").value = selectedDate;
+
+		                document.getElementById("updateButton").style.display = "block"; // Show update button
+		            }
+		        });
+		    });
+		});
+
+		function submitUpdatedTimesheet() {
+		    let userId = document.getElementById("hiddenUserId").value;
+		    let date = document.getElementById("hiddenDate").value;
+		    let loginTime = document.getElementById("loginTime").value;
+		    let logoutTime = document.getElementById("logoutTime").value;
+		    let breakMinutes = document.getElementById("breakMinutes").value;
+		    let totalHoursWorked = document.getElementById("totalHoursWorked").value;
+		    let activityLog = document.getElementById("activityLog").value;
+
+		    if (!loginTime || !logoutTime || !totalHoursWorked) {
+		        alert("Please fill in all required fields.");
+		        return;
+		    }
+
+		    let updatedData = {
+		        userId: userId,
+		        date: date,
+		        loginTime: loginTime,
+		        logoutTime: logoutTime,
+		        breakMinutes: breakMinutes,
+		        totalHoursWorked: totalHoursWorked,
+		        activityLog: activityLog
+		    };
+
+		    fetch('/update', {
+		        method: 'PUT',
+		        headers: { 'Content-Type': 'application/json' },
+		        body: JSON.stringify(updatedData)
+		    })
+		    .then(response => response.text())
+		    .then(data => {
+		        alert(data);
+		        location.reload();
+		    })
+		    .catch(error => console.error('Error:', error));
+		}
+		
+
+    </script>
+
+</body>
+
+</html>

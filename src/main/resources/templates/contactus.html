@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+	<link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Codystar:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:i,bi,700,300,400&display=swap">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Codystar:wght@300;400&display=swap');
+
+        /* Reset and General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            background-color: rgb(0, 0, 0);
+            overflow: hidden;
+            font-family: 'Satoshi Variable', Arial, sans-serif;
+            color: #e0e0e0;
+        }
+
+        .main-container {
+            overflow-y: auto;
+            height: 100vh;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+
+        .main-container>div:first-child.section {
+            height: 100vh;
+            justify-content: center;
+        }
+
+        .head-container {
+            color: #ffffff;
+            background-color: rgb(0, 0, 0);
+            text-align: center;
+            /* Center the content */
+            z-index: 1;
+            max-width: 800px;
+            /* Limit width for better readability */
+            margin: 2rem auto 0;
+            /* Center the container with top margin */
+        }
+
+        .welcome-text {
+            font-size: 4.25rem;
+            font-style: normal;
+            font-weight: 900;
+            line-height: 1.2;
+            padding: 0px 0px 0px 40px;
+        }
+
+        h2 {
+            text-align: left;
+            font-weight: 900;
+            font-family: "Caveat", cursive;
+            font-optical-sizing: auto;
+            font-style: normal;
+            margin-bottom: 0%;
+        }
+
+        h6 {
+            font-family: "Codystar", sans-serif;
+            font-weight: 300;
+            text-shadow: 0 0 5px #ffffff, 0 0 7px #ffffff, 0 0 9px #ffffff, 0 0 11px #ffffff;
+        }
+
+        .star-icon-container {
+            margin-bottom: 1rem;
+            align-items: center;
+            display: flex;
+            padding: 0px 0px 0px 40px;
+
+        }
+
+        .star-icon {
+            width: 60px;
+            height: 40px;
+        }
+
+        .below-welcome-text {
+            color: #b0b0b0;
+            font-size: 1.2rem;
+            font-weight: 400;
+            padding: 0px 20px 0px 0px;
+            line-height: 1.6;
+        }
+
+
+        /* Marquee Section (Appears on Scroll) */
+        .track-horizontal {
+            background-color: rgb(56, 93, 216);
+            position: relative;
+            padding: 1rem 0;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .marquee-text-container {
+            display: flex;
+            width: fit-content;
+        }
+
+        .marquee-text {
+            color: rgb(0, 0, 0);
+            font-size: 3rem;
+            font-weight: 700;
+            white-space: nowrap;
+            will-change: transform;
+            animation: marquee-text 60s linear infinite;
+            padding: 0 1rem;
+        }
+
+        @keyframes marquee-text {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Contact Form Section */
+        .contact-section-wrapper {
+            padding: 40px 20px;
+            background-color: #000;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #1e1e1e;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 1100px;
+            gap: 40px;
+            margin: 2rem auto;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 20px;
+        }
+
+        .contact-info h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .contact-info p {
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #b0b0b0;
+        }
+
+        .contact-info p a {
+            color: #8ab4f8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-info p a:hover {
+            text-decoration: underline;
+            color: #9bc2fa;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+
+        .info-item i {
+            margin-right: 15px;
+            color: #8ab4f8;
+            font-size: 1.3em;
+            width: 20px;
+            text-align: center;
+        }
+
+        .info-item a {
+            color: #c0c0c0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .info-item a:hover {
+            color: #ffffff;
+        }
+
+        .contact-form-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9em;
+            color: #a0a0a0;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            box-sizing: border-box;
+            font-size: 1em;
+            font-family: 'Satoshi Variable', Arial, sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8ab4f8;
+            box-shadow: 0 0 0 2px rgba(138, 180, 248, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group textarea::placeholder {
+            color: #666;
+        }
+
+        .captcha-group {
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            color: #333;
+        }
+
+        .captcha-group input[type="checkbox"] {
+            margin-right: 12px;
+            width: 22px;
+            height: 22px;
+            accent-color: #4285f4;
+            cursor: pointer;
+        }
+
+        .captcha-label {
+            font-weight: normal !important;
+            margin-bottom: 0 !important;
+            color: #333 !important;
+            font-size: 0.95em;
+        }
+
+        .captcha-logo-container {
+            margin-left: auto;
+            text-align: center;
+        }
+
+        .captcha-logo {
+            width: 32px;
+            height: 32px;
+            display: block;
+            margin: 0 auto 2px;
+        }
+
+        .captcha-brand-text {
+            font-size: 0.7em;
+            color: #555;
+            line-height: 1;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(to bottom, #383838, #2a2a2a);
+            color: #e0e0e0;
+            padding: 15px 0;
+            border: 1px solid #444;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.05em;
+            font-weight: 600;
+            width: 100%;
+            font-family: 'Satoshi Variable', Arial, sans-serif;
+            transition: 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05) inset, 0 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button[type="submit"]:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+        }
+
+        button[type="submit"]:hover {
+            background: linear-gradient(to bottom, #404040, #303030);
+            border-color: #555;
+            color: #fff;
+        }
+
+
+        button[type="submit"]:active {
+            background: linear-gradient(to bottom, #2a2a2a, #383838);
+            box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05) inset;
+        }
+
+        .button-text,
+        .button-loader {
+            display: inline-block;
+        }
+
+        .button-loader {
+            font-style: italic;
+        }
+
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 992px) {
+            .welcome-text {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .section {
+                min-height: 0vh;
+            }
+
+            .contact-info {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .contact-info h1 {
+                font-size: 2.2em;
+            }
+
+            .welcome-text {
+                font-size: 3rem;
+            }
+
+            .marquee-text {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-text {
+                font-size: 2.5rem;
+            }
+
+            .below-welcome-text {
+                font-size: 1rem;
+            }
+
+            .contact-info h1 {
+                font-size: 1.8em;
+            }
+
+            .section h6 {
+                padding: 0px;
+            }
+
+            .star-icon-container {
+                padding: 0px;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group textarea,
+            button[type="submit"] {
+                font-size: 0.95em;
+                padding: 12px 14px;
+            }
+
+            .captcha-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .captcha-group input[type="checkbox"] {
+                margin-bottom: 10px;
+            }
+
+            .captcha-logo-container {
+                margin-left: 0;
+                margin-top: 10px;
+                align-self: flex-end;
+            }
+
+            .marquee-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        .address {
+            padding-left: 20px;
+            height: 200px;
+            width: 500px;
+        }
+
+        .map-and-address {
+            display: flex;
+            padding: 10px;
+            height: 150px;
+        }
+
+        .footer {
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="section">
+            <div id="navbar-container">
+                <div class="header-container" id="header-container"></div>
+                <h2 class="welcome-text">Let’s Work Together.....</h2>
+                <div class="star-icon-container">
+                    <img src="https://cdn.prod.website-files.com/670bf3be6040f597f238f1be/671928d79cffba5b25ff7476_star-grey.svg"
+                        alt="Star Icon" class="star-icon">
+                    <h6 class="below-welcome-text">Get in touch below, say hello or...</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="track-horizontal">
+                <div class="marquee-text-container" id="marqueeContainer">
+                    <div class="marquee-text" id="marqueeContent">
+                        HELLO &nbsp नमस्ते &nbsp ನಮಸ್ಕಾರ &nbsp నమస్కారం &nbsp வணக்கம்&nbsp ہیلو&nbsp HOLA &nbsp HELLO
+                        &nbsp प्रणाम &nbsp ꯍꯦꯜꯂꯣ &nbsp నమస్కారం &nbsp வணக்கம்&nbsp CIAO&nbsp HOLA&nbsp HELLO &nbsp
+                        नमस्ते &nbsp ನಮಸ್ಕಾರ &nbsp నమస్కారం &nbsp வணக்கம்&nbsp ہیلو&nbsp HOLA &nbsp HELLO
+                        &nbsp प्रणाम &nbsp ꯍꯦꯜꯂꯣ &nbsp నమస్కారం &nbsp வணக்கம்&nbsp CIAO&nbsp HOLA &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section contact-section-wrapper">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h1>Send Mail Here</h1>
+                    <p>Got questions or ready to start something amazing?</p>
+                    <p>Drop us a message or <a href="https://calendar.app.google/WLSCQpo9DCT6xish6">book a video call
+                            here</a> to discuss your ideas. We're here
+                        to help bring your vision to life, and we'd love to connect with you!</p>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:hr@delanceytech.com">hr@delanceytech.com</a>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:+91 4836 3642 36">+91 6336 3642 36</a>
+                    </div>
+                    <div class="map-and-address">
+                        <div class="map-container">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.8919558544794!2d77.58301907358792!3d12.914665216126968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae150cb7c1e5a5%3A0x2e4ddc9ae3a005a!2sGolden%20Square%20JP%20Nagar!5e0!3m2!1sen!2sin!4v1747822962641!5m2!1sen!2sin"
+                                width="200" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="address">Delancey Technologies PVT LTD
+                            1101 Golden Square Business Centre,
+                            24th Main, J P Nagar 1st Phase,
+                            Bangalore, Karnataka, India, 560078</div>
+                    </div>
+                </div>
+
+                <div class="contact-form-section">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5"
+                                placeholder="Type your message..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="submitButton">
+                                <span class="button-text">Send Message</span>
+                                <span class="button-loader" style="display: none;">Loading...</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <footer>
+                <p>&copy; 2025 Delancey Tec. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("header-container").innerHTML = data;
+            })
+            .catch(error => console.error("Error loading header:", error));
+
+    </script>
+
+</body>
+
+</html>

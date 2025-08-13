@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/2416/2416666.png">
+    <meta charset="UTF-8">
+    <title>AdminDashboard</title>
+</head>
+
+<style>
+    body {
+        overflow-x: visible;
+        scroll-behavior: smooth;
+    }
+
+    nav {
+        background-color: navy !important;
+
+    }
+
+    .navbar-brand {
+        color: whitesmoke !important;
+        font-size: 30px !important;
+        font-weight: bold;
+    }
+
+	
+    .card {
+        box-shadow: rgba(14, 30, 37, 0.12) 1px 2px 2px 0px, rgba(14, 30, 37, 0.32) 1px 2px 2px 0px;
+    }
+
+    .card-body {
+        text-align: center;
+    }
+
+    .table-responsive {
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    }
+
+    th {
+        text-align: center;
+        font-size: 18px !important;
+    }
+
+    td {
+        text-align: center;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    label {
+        font-weight: 500;
+    }
+	
+	@keyframes fadeOut {
+	    0% { opacity: 1; height: auto; }  /* Fully visible */
+	    99% { opacity: 1; height: auto; } /* Stay visible for 3 seconds */
+	    100% { opacity: 0; height: 0; padding: 0; margin: 0; visibility: hidden; }
+	}
+
+	.fade-out {
+	    animation: fadeOut 3s steps(1, end) forwards; /* Instant fade-out */
+	}
+	
+	.btn-logout {
+	        display: inline-block;
+	        padding: 6px 13px;
+	        font-size: 18px;
+	        color: white;
+	        background-color: #e74c3c; 
+	        border: none;
+	        border-radius: 8px;
+	        text-decoration: none;
+	        transition: background-color 0.3s ease, transform 0.2s ease;
+			margin-top: 5px;
+	    }
+
+	    .btn-logout:hover {
+	        background-color: #c0392b;
+	        transform: scale(1.05); 
+	    }
+
+	    .btn-logout:active {
+	        background-color: #a93226;
+	    }
+
+	
+</style>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-light mb-5">
+        <div class="container">
+            <a class="navbar-brand text-bold" href="#"><i class="fa fa-align-center"
+                    aria-hidden="true">&nbsp;&nbsp;DELANCEY TECH</i></a>
+					
+					
+        </div>
+		<p style="text-align: center; ">
+		    <a href="/logout" th:href="@{/logout}" class="btn-logout">Logout</a>
+		</p>
+    </nav>
+
+    <main>
+		
+		<div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show fade-out" role="alert"
+		    style="position: absolute; top: 80px; left: 0; width: 100%; z-index: 1050; border-radius: 0;">
+		    <p th:text="${successMessage}" class="m-0"></p>
+		    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+
+		<div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show fade-out" role="alert"
+		    style="position: absolute; top: 80px; left: 0; width: 100%; z-index: 1050; border-radius: 0;">
+		    <p th:text="${errorMessage}" class="m-0"></p>
+		    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+
+        <div class="container p-4">
+            <div class="head_section">
+                <div class="row row-cols-1 row-cols-md-4 g-3">
+                    <div class="col">
+                        <a href="#exampleModalToggle1" data-bs-toggle="modal" role="button"
+                            style="text-decoration: none; color: white;">
+                            <div class="card h-100 bg-success">
+                                <div class="card-body">
+                                    <h5 class="text-light"><i class="fa fa-plus"></i>&nbsp;Add Employee</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#exampleModalToggle2" data-bs-toggle="modal" role="button"
+                            style="text-decoration: none; color: white;">
+                            <div class="card h-100 bg-primary">
+                                <div class="card-body">
+                                    <h5 class="text-light"><i class="fa fa-area-chart"
+                                            aria-hidden="true"></i>&nbsp;Update Employee</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#exampleModalToggle3" data-bs-toggle="modal" role="button"
+                            style="text-decoration: none; color: white; text-align: center;">
+                            <div class="card h-100 bg-danger">
+                                <div class="card-body">
+                                    <h5 class="text-light"><i class="fa fa-trash"></i>&nbsp;Delete Employee</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+					<div class="col">
+					    <a href="/register" target="_blank" style="text-decoration: none; color: white;">
+					        <div class="card h-100 bg-warning"> <!-- Changed background to warning (yellow) -->
+					            <div class="card-body">
+					                <h6 class="text-dark">
+					                    <i class="fa fa-user-plus"></i>&nbsp;Register New Employee
+					                </h6>
+					            </div>
+					        </div>
+					    </a>
+					</div>
+                </div>
+            </div>
+            <br>
+            <div class="items_table mt-5 mb-4">
+                <div class="table-responsive p-2">
+					<h4 class="text-center p-2 mt-2" 
+					    style="font-family:'Times New Roman', Times, serif; font-weight: bold;">
+					    Admin Dashboard
+					</h4>
+                    <table class="table table-bordered table-hover mt-5">
+                        <thead class="bg-warning">
+
+                            <th>SI.NO</th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Gender</th>
+                           
+                            <th>Role</th>
+
+                        </thead>
+                        <tbody>
+                            <tr th:each="employee, index : ${employees}">
+                                <td th:text="${index.index + 1}"></td>
+                                <td th:text="${employee.id}"></td>
+                                <td th:text="${employee.employeeName}"></td>
+                                <td th:text="${employee.employeeEmail}"></td>
+                                <td th:text="${employee.employeePhone}"></td>
+                                <td th:text="${employee.employeeGender}"></td>
+                                <td th:text="${employee.employeeRole}"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- model for create-->
+    <div class="modal fade" id="exampleModalToggle1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div th:if="${success}" class="alert alert-success" role="alert">
+                        <p th:text="${success}"></p>
+                    </div>
+					<form class="p-2" th:action="@{/create}" th:object="${employee}" method="post">
+					    <div class="modal-header d-flex justify-content-center position-relative">
+					        <h4 style="font-family: 'Times New Roman', Times, serif; position: inherit;">Add Employee</h4>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					    </div>
+
+					    <!-- Employee ID Dropdown -->
+					    <div class="row p-2">
+					        <label class="p-1" for="employeeId">Employee ID</label>
+					        <select id="employeeId" th:field="*{id}" class="form-select" required>
+					            <option value="">Select Employee ID</option>
+					        </select>
+					    </div>
+
+					    <!-- Auto-filled Name -->
+					    <div class="row p-2">
+					        <label class="p-1" for="employeeName">Employee Name</label>
+					        <input type="text" th:field="*{employeeName}" id="employeeName" class="form-control" placeholder="Employee Name" readonly required>
+					    </div>
+
+					    <!-- Auto-filled Email -->
+					    <div class="row p-2">
+					        <label class="p-1" for="employeeEmail">Email</label>
+					        <input type="text" th:field="*{employeeEmail}" id="employeeEmail" class="form-control" placeholder="Email Address" readonly required>
+					    </div>
+
+					    <!-- Phone -->
+					    <div class="row p-2">
+					        <label class="p-1" for="employeePhone">Phone</label>
+					        <input type="tel" th:field="*{employeePhone}" class="form-control" placeholder="Phone Number" required>
+					    </div>
+
+					    <!-- Gender -->
+					    <div class="row p-2">
+					        <label class="p-1">Gender</label>
+					        <select th:field="*{employeeGender}" class="form-select" required>
+					            <option value="" selected>select option</option>
+					            <option value="Male">Male</option>
+					            <option value="Female">Female</option>
+					        </select>
+					    </div>
+
+					    <!-- Role -->
+					    <div class="row p-2">
+					        <label class="p-1" for="employeeRole">Employee Role</label>
+					        <select th:field="*{employeeRole}" class="form-select" required>
+					            <option value="" selected>select option</option>
+					            <option value="Software Engineer">Software Engineer</option>
+					            <option value="Design Verification Engineer">Design Verification Engineer</option>
+					            <option value="Design For Testability Engineer">Design For Testability Engineer</option>
+					            <option value="Admin">Admin</option>
+					            <option value="Manager">Manager</option>
+					            <option value="Human Resource">Human Resource</option>
+					        </select>
+					    </div>
+
+					    <button type="submit" class="btn btn-success mt-3 mb-2">Add Employee</button>
+					</form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- model for update-->
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="p-2" th:action="@{/update}" th:object="${employee}" method="post">
+                        <!-- Check if errorMessage is present in the model and display it -->
+                        <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                            <p th:text="${errorMessage}"></p>
+                        </div>
+						<div class="modal-header d-flex justify-content-center position-relative">
+						     <h4 style="font-family: 'Times New Roman', Times, serif;position: inherit;">Update Employee</h4>
+						        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+
+						<div class="row p-1">
+						    <label class="p-1" for="updateEmployeeIdDropdown">Employee ID</label>
+						    <select id="updateEmployeeIdDropdown" th:field="*{id}" class="form-select" required>
+						        <option value="">Select Employee ID</option>
+						    </select>
+						</div>
+                        <div class="row p-1">
+                            <label class="p-1" for="employeeName">Employee Name</label>
+                            <input type="text" th:field="*{employeeName}" class="form-control"
+                                placeholder="employee name" required>
+                        </div>
+
+                        <div class="row p-1">
+                            <label class="p-1" for="employeeEmail">Email</label>
+                            <input type="text" th:field="*{employeeEmail}" class="form-control"
+                                placeholder="email address" required>
+                        </div>
+
+                        <div class="row p-1">
+                            <label class="p-1" for="employeePhone">Phone</label>
+                            <input type="tel" th:field="*{employeePhone}" class="form-control"
+                                placeholder="phone number" required>
+                        </div>
+
+                        <div class="row p-1">
+                            <label class="p-1">Gender</label>
+                            <select th:field="*{employeeGender}" class="form-select" required>
+                                <option value="" selected>select option</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+
+                        <div class="row p-1">
+                            <label class="p-1" for="employeeRole">Employee Role</label>
+                            <select th:field="*{employeeRole}" class="form-select" required>
+								<option value="" selected>select option</option>
+						            <option value="Software Engineer">Software Engineer</option>
+									<option value="Design Verification Engineer">Design Verification Engineer</option>
+									<option value="Design For Testability Engineer">Design For Testability Engineer</option> 
+									<option value="Admin">Admin</option><option value="Manager">Manager</option> 
+									<option value="Human Resource">Human Resource</option>
+						   </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-3 mb-2">Update Employee</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- model for delete-->
+    <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="p-2" th:action="@{/remove}" th:object="${employee}" method="post">
+                        <!-- Alert message -->
+                        <div th:if="${alertMessage}" class="alert alert-danger">
+                            <p th:text="${alertMessage}"></p>
+                        </div>
+						<div class="modal-header d-flex justify-content-center position-relative">
+						   <h4 style="font-family: 'Times New Roman', Times, serif;position: inherit;">Delete Employee</h4>
+						   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+
+
+						   <div class="row p-2">
+						       <label class="p-1" for="deleteEmployeeId">Employee ID</label>
+						       <select id="deleteEmployeeId" name="id" class="form-select" required>
+						           <option value="">Select Employee ID</option>
+						       </select>
+						   </div>
+
+
+                        <button type="submit" class="btn btn-danger mt-3 mb-2">Delete Employee</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+	document.addEventListener("DOMContentLoaded", function () {
+	    // Fetch Employee IDs and populate the dropdown
+	    fetch("/get-employee-ids")
+	        .then(response => response.json())
+	        .then(data => {
+	            let dropdown = document.getElementById("employeeId");
+	            data.forEach(id => {
+	                let option = document.createElement("option");
+	                option.value = id;
+	                option.textContent = id;
+	                dropdown.appendChild(option);
+	            });
+	        });
+
+	    // Auto-fill Full Name & Email when Employee ID is selected
+	    document.getElementById("employeeId").addEventListener("change", function () {
+	        let employeeId = this.value;
+	        if (employeeId) {
+	            fetch(`/get-employee-details?id=${employeeId}`)
+	                .then(response => response.json())
+	                .then(data => {
+	                    document.getElementById("employeeName").value = data.fullname || "";
+	                    document.getElementById("employeeEmail").value = data.email || "";
+	                });
+	        } else {
+	            document.getElementById("employeeName").value = "";
+	            document.getElementById("employeeEmail").value = "";
+	        }
+	    });
+	});
+	
+	document.addEventListener("DOMContentLoaded", function () {
+	    fetch("/get-employee-ids")
+	        .then(response => response.json())
+	        .then(data => {
+	            let dropdown = document.getElementById("updateEmployeeIdDropdown");
+	            if (dropdown) {
+	                dropdown.innerHTML = ""; // Clear previous options
+	                
+	                // Add the default "Select Employee ID" option
+	                let defaultOption = document.createElement("option");
+	                defaultOption.value = "";
+	                defaultOption.textContent = "Select Employee ID";
+	                defaultOption.selected = true; // Ensure it's selected by default
+	                defaultOption.disabled = true; // Make it unselectable
+	                dropdown.appendChild(defaultOption);
+
+	                // Add employee IDs from the database
+	                data.forEach(id => {
+	                    let option = document.createElement("option");
+	                    option.value = id;
+	                    option.textContent = id;
+	                    dropdown.appendChild(option);
+	                });
+	            }
+	        })
+	        .catch(error => console.error("Error fetching employee IDs:", error));
+	});
+
+	document.addEventListener("DOMContentLoaded", function () {
+	    fetch("/get-employee-ids") // Fetch Employee IDs from the backend
+	        .then(response => response.json())
+	        .then(data => {
+	            let deleteEmployeeDropdown = document.getElementById("deleteEmployeeId");
+	            if (deleteEmployeeDropdown) {
+	                deleteEmployeeDropdown.innerHTML = '<option value="">Select Employee ID</option>'; // Clear previous values
+	                data.forEach(id => {
+	                    let option = document.createElement("option");
+	                    option.value = id;
+	                    option.textContent = id;
+	                    deleteEmployeeDropdown.appendChild(option);
+	                });
+	            }
+	        })
+	        .catch(error => console.error('Error fetching employee IDs:', error));
+	});
+
+	</script>
+</body>
+
+</html>

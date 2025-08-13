@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timesheet Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7fa;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .timesheet-table {
+            width:100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            margin-left: auto;
+            margin-right: auto;
+            padding: auto;
+        }
+
+        .timesheet-table th, .timesheet-table td {
+           
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+			text-align: center;
+        }
+
+        .timesheet-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #111111;
+			padding: 12px;
+        }
+
+        .activity-log {
+           
+            padding: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            max-height: 100px;
+			min-height:30px;
+        }
+
+        .timesheet-card {
+           
+            background-color: #ffffff;
+            margin: 15px 0;
+            padding: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .timesheet-table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+	<h2 th:text="
+	    'Timesheet Details for Week '
+	    + ${#temporals.format(weekStart, 'dd MMM yyyy')}
+	    + ' to '
+	    + ${#temporals.format(weekEnd,   'dd MMM yyyy')}
+	">
+	  Timesheet Details for Week
+	</h2>
+
+		<div th:if="${weeklyTimesheets != null and !#lists.isEmpty(weeklyTimesheets)}">
+		    <table class="timesheet-table">
+		        <thead>
+		            <tr>
+		                <th>Date</th>
+		                <th>Login Time</th>
+		                <th>Logout Time</th>		                
+		                <th>Break Time</th>
+						<th>Total Hours Worked</th>
+		                <th>Status</th>
+		                <th>Activity Log</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr th:each="timesheet : ${weeklyTimesheets}">
+		                <td th:text="${timesheet.date}"></td>
+		                <td th:text="${timesheet.loginTime}"></td>
+		                <td th:text="${timesheet.logoutTime}"></td>
+		                <td th:text="${timesheet.breakMinutes}"></td>
+						<td th:text="${timesheet.totalHoursWorked}"></td>
+		                <td th:text="${timesheet.status}"></td>
+		                <td>
+		                    <textarea class="activity-log" th:text="${timesheet.activityLog}" readonly></textarea>
+		                </td>
+		            </tr>
+		        </tbody>
+		    </table>
+		</div>
+
+		<div th:if="${weeklyTimesheets == null or #lists.isEmpty(weeklyTimesheets)}">
+		    <p>No timesheet data available for this week.</p>
+		</div>
+
+		<form th:action="@{/timesheet/submitToManager}" method="POST">
+		    <input type="hidden" th:name="weekStart" th:value="${weekStart}" />
+		    <input type="hidden" th:name="weekEnd" th:value="${weekEnd}" />
+		    <button type="submit">Submit to Manager</button>
+		</form>
+</body>
+</html>

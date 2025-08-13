@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manager-Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 50px;
+        }
+        .dashboard {
+            background-color: #5e057e;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .logout {
+            margin-top: 20px;
+        }
+		.card-container {
+		           margin-top: 30px;
+		       }
+		       .card {
+		           background-color: #ffffff;
+		           color: #5e057e;
+		           padding: 15px 30px;
+		           border-radius: 10px;
+		           display: inline-block;
+		           text-decoration: none;
+		           font-weight: bold;
+		           transition: background-color 0.3s;
+		       }
+		       .card:hover {
+		           background-color: #ddd;
+				   opacity: 90px;
+		       }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Welcome, <span th:text="${fullname}"></span>!</h1>
+        <p>You are logged in as <b>Manager</b>.</p>
+        <div class="logout">
+            <a th:href="@{/logout}" style="color: yellow;">Logout</a>
+        </div>
+    </div>
+	<div class="card-container">
+	            <a th:href="@{/manager/pending-timesheets}" class="card">Timesheet Approvals</a>
+	        </div>
+</body>
+</html>

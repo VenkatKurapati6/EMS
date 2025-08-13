@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delancey Employee Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #dcdce7;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            background-color: #9d56c1;
+            padding: 15px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+           justify-content: flex;
+           font-family:'Monaco';
+        }
+
+        .container{
+            padding:10px;
+            padding-top: px;
+            text-align: center;
+        }
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .card {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 65px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+            backdrop-filter: blur(50px);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            cursor: pointer;
+            margin: 10px;
+            color: #5e057e;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            filter: blur(12px);
+            z-index: -1;
+            border-radius: 100px;
+          
+        }
+
+
+        .card i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px 5px rgba(15, 15, 15, 0.934);
+            background-color: #5e057e;
+            color: white;
+        }
+
+        .card h5 {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .card img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            position: relative;
+        }
+
+
+        .card-container a:nth-child(1):hover {
+            background-color: #ff4d4d;
+            color: white;
+        }
+
+        .card-container a:nth-child(2):hover {
+            background-color: #4da6ff;
+            color: white;
+        }
+
+        .card-container a:nth-child(3):hover {
+            background-color: #ffcc00;
+            color: white;
+        }
+
+        .card-container a:nth-child(4):hover {
+            background-color: #66cc66;
+            color: white;
+        }
+
+        .card-container a:nth-child(5):hover {
+            background-color: #ff99cc;
+            color: white;
+        }
+
+        .card-container a:nth-child(6):hover {
+            background-color: #9966ff;
+            color: white;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-container {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+		
+
+		.logout {
+		    text-align: right;
+		    margin-top: 20px;
+		}
+
+		.logout a {
+		    color: yellow;
+		    font-size: 18px;
+		    text-decoration: none;
+		    padding: 10px 20px;
+		    background-color: #34495e;
+		    border-radius: 5px;
+		    transition: background-color 0.3s;
+		}
+
+		.logout a:hover {
+		    background-color: #1abc9c;
+		}
+    </style>
+</head>
+
+<body>
+
+	<div class="navbar">
+	       <h3>Delancey Tech - Employee Login</h3>
+		   <div class="logout">
+		   	       <a th:href="@{/logout}">Logout</a>
+		   	   </div>
+	   </div>
+
+    <div class="container">
+		<h1>Welcome to Delancey Tech <span th:text="${fullname}"></span>!</h1>
+
+    <div class="main-container">
+        <div class="card-container">
+            <a href="/timesheet/TruTimeSheet" target="_blank" class="card">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/128/4388/4388165.png" alt="TrueTime Icon">
+                    <h5>TruTime Sheet</h5>
+                </div>
+            </a>
+			
+            <a href="/employee-dashboard" class="card">
+                <div>
+                    <!--<img src="https://cdn-icons-png.flaticon.com/128/6404/6404056.png" alt="Employee dashboard">-->
+                    <img src="https://static.thenounproject.com/png/3839368-512.png" alt="Employee dashboard">
+                    <h5>Employee Details</h5>
+                </div>
+            </a>
+            <a href="/apply-leave" class="card">
+                <div>
+                    <!--<img src="https://cdn-icons-png.flaticon.com/128/10345/10345400.png " alt=" Apply Leave"> */-->
+                    <img src="https://cdn-icons-png.flaticon.com/512/10034/10034756.png" alt="apply-leave">
+                    <h5>Apply Leave</h5>
+                </div>
+            </a>
+            <a href="/timesheet/timesheetSummary" target="_blank" class="card">
+                <div>
+                    <img src="https://static.thenounproject.com/png/3819880-512.png" alt="Submit timesheet">
+                    <h5>Submit Timesheet</h5>
+                </div>
+            </a>
+            <a href="/holidays-list" class="card">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/128/3634/3634857.png" alt="Holidays List ">
+                    <h5>Holidays List</h5>
+                </div>
+            </a>
+            <a href="/check-leave-balance" class="card">
+                <div>
+                    <img src=" https://cdn-icons-png.flaticon.com/512/646/646407.png" alt="Check leave balance">
+                    <h5>Check Leave Balance</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

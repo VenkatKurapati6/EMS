@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>careers</title>
+	<link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=location_city" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&family=Caveat:wght@400..700&family=Codystar:wght@300;400&family=Comic+Relief:wght@400;700&family=Coral+Pixels&family=Dancing+Script:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Freehand&family=Poetsen+One&family=Share+Tech&family=Tagesschrift&family=Underdog&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            align-items: center;
+            font-family: sans-serif;
+            padding-bottom: 40px;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 50px 20px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .section-light-bg {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .section-gray-bg {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .section-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        .section-content-left {
+            flex: 1;
+            min-width: 400px;
+        }
+
+        .section-content-right {
+            flex: 1;
+            text-align: center;
+            min-width: 300px;
+            display: flex;
+            gap: 20px;
+            margin-top: 50px;
+            position: relative;
+            justify-content: center;
+        }
+
+        .load-page {
+            font-family: "Coral Pixels", serif;
+            font-weight: 300;
+            font-style: normal;
+            text-align: center;
+            margin: 0%;
+        }
+
+        .h2-below-text {
+            text-align: center;
+            margin: 0px 30px 0px 0px;
+            padding: 0px 10px 0px;
+            font-family: "Comic Relief", system-ui;
+        }
+
+        .section h2 {
+            color: inherit;
+            font-size: 2em;
+        }
+
+        .load-after-page {
+            text-align: center;
+            font-family: "Coral Pixels", serif;
+        }
+
+        .section-center h2 {
+            color: #fff;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .section-center {
+            background: #111;
+        }
+
+
+        .section-center p {
+            color: #ccc;
+            font-size: 1.1em;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 20px auto;
+            text-align: center;
+        }
+
+        .p-below-text {
+            text-align: center;
+            font-family: "Underdog", system-ui;
+            text-transform: capitalize;
+            color: #56a4ec;
+        }
+
+
+
+
+        .section-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+
+        .section-boxes-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            min-width: 300px;
+            margin-top: 20px;
+        }
+
+
+        .feature-box {
+            flex: 0 0 200px;
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+
+        .feature-box.curious {
+            background-color: #009e7e;
+            opacity: 0.9;
+            z-index: 2;
+        }
+
+        .feature-box.adaptability {
+            background-color: #d422ce;
+            margin: -30px 0px 30px -40px;
+            opacity: 0.9;
+            z-index: 3;
+        }
+
+        .feature-box.reflection {
+            background-color: #3498db;
+            opacity: 0.9;
+            margin-left: -40px;
+            z-index: 2;
+        }
+
+
+
+        .feature-box h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: white;
+            width: 100%;
+            text-align: center;
+        }
+
+        .feature-box p {
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin: 10px 0 0;
+            text-align: center;
+            color: white;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-30px);
+        }
+
+        .section-center hr {
+            width: 25%;
+            margin: 0 auto 20px auto;
+            border: none;
+            border-top: 2px solid #686767;
+        }
+
+        .job-card {
+            font-family: "Caveat", cursive;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 40px auto 40px;
+            position: relative;
+        }
+
+        .job-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .job-card p {
+            font-family: "Caveat", cursive;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #333;
+            white-space: pre-line;
+        }
+
+        .job-meta {
+            font-family: "Comic Relief", system-ui;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            color: #007BFF;
+            font-size: 1rem;
+        }
+
+        .job-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .job-meta svg {
+            display: block;
+        }
+
+        .apply-button {
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            background-color: #0db9a6;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .apply-button:hover {
+            background-color: #0aa593;
+        }
+
+        .application-form {
+            background-color: #e3f4ff;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .application-form h2 {
+            font-family: "Share Tech", sans-serif;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            font-family: "Share Tech", sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .form-group input[type="file"] {
+            border: none;
+            padding: 0;
+        }
+
+        .submit-btn {
+            margin-top: 30px;
+            background-color: #0aaaf0;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-btn:hover {
+            background-color: #099ed7;
+        }
+
+        @media (max-width: 768px) {
+
+            .section-container,
+            .section-content-left,
+            .section-content-right,
+            .section-boxes-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .section-content-left,
+            .section-content-right {
+                width: 100%;
+                padding-right: 10px;
+                padding-left: 10px;
+                min-width: auto;
+            }
+
+            .section-image img {
+                margin-top: 20px;
+            }
+
+            .section-boxes-container {
+                margin-top: 20px;
+                gap: 15px;
+            }
+
+            .feature-box {
+                flex-basis: calc(100% - 20px);
+                flex-shrink: 0;
+                flex-grow: 1;
+                max-width: none;
+                min-width: auto;
+                margin: 0;
+            }
+
+            .feature-box.adaptability,
+            .feature-box.reflection {
+                margin: 0;
+            }
+
+
+            .section h2 {
+                font-size: 2em;
+            }
+
+            .section-center h2 {
+                font-size: 2em;
+            }
+
+            .section-center p {
+                font-size: 1em;
+            }
+
+
+            .job-meta {
+                flex-direction: column;
+                gap: 5px;
+                align-items: flex-start;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: span 1;
+            }
+
+            .apply-button {
+                position: static;
+                margin-top: 20px;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .job-card {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .application-form {
+                padding: 20px 15px;
+                width: 95%;
+            }
+
+            .application-form h2 {
+                font-size: 1.3rem;
+                margin-bottom: 20px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            .submit-btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="section section-light-bg">
+        <div id="navbar-container"></div>
+        <div class="section-container">
+            <div class="section-content-left">
+                <h2 class="load-page">Advance Your Career, Your Way....</h2>
+                <p class="h2-below-text">
+                    We believe great ideas start with strong partnerships.That’s why we focus on cultivating trust,
+                    transparency, and collaboration—helping both our clients
+                    and our team thrive in every challenge and opportunity.
+                </p>
+            </div>
+            <div class="section-content-right section-image">
+                <img src="images/careers.jpg" alt="Illustration of person seeing the future wih Delancey">
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-gray-bg">
+        <div class="section-container">
+            <div class="section-content-left">
+                <h2 class="load-after-page">A Growing Company....</h2>
+                <p class="h2-below-text">
+                    We’re here to help you grow not just in your role, but in your career. With hands-on learning,
+                    mentorship, and meaningful projects, your development is in your hands and we’ve got your back."
+                </p>
+                <p class="p-below-text ">
+                    Do your best work. Become your best self
+                </p>
+            </div>
+            <div class="section-content-right section-boxes-container">
+                <div class="feature-box curious">
+                    <h3>Stay Curious</h3>
+                    <p>Ask questions, explore the unfamiliar, and never stop learning — it's how we grow.</p>
+                </div>
+                <div class="feature-box adaptability">
+                    <h3>Adaptability</h3>
+                    <p>Change is constant — roll with it, stay curious, and keep building something great.</p>
+                </div>
+                <div class="feature-box reflection">
+                    <h3>Reflection</h3>
+                    <p>Pause to look back, learn from what worked (and didn’t), then move forward with purpose.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-center" style="padding: 20px; color: #ccc;">
+        <h2>Open Positions</h2>
+        <hr>
+        <p>
+            We believe great people build great things. Think you’re a fit?<br> See our openings and apply now.
+        </p>
+    </section>
+
+    <div class="job-card">
+        <h3>Validation Engineer</h3>
+        <p>
+            <strong>SKILLS:</strong>
+            - Enhancing and porting and also, Building validation test plan where applicable.
+            - Proficiency in C/C++ is required.
+            - Experience in validating networking chips / ETH / PCIe is plus
+            - Experience in UC based system validation is plus.
+            - Ability to come up with a test plan and writing test suite and debug in pre-Si and on Si.
+            - Building a regression test suite so proficiency in Scripting Python/Perl/any such is required.
+            - May be 5+ yrs of solid test of SW and HW platforms is required
+        </p>
+        <div class="job-meta">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                    fill="#000000">
+                    <path
+                        d="M144-96v-504h192v-72l144-144 144 144v216h192v360H144Zm72-72h72v-72h-72v72Zm0-144h72v-72h-72v72Zm0-144h72v-72h-72v72Zm228 288h72v-72h-72v72Zm0-144h72v-72h-72v72Zm0-144h72v-72h-72v72Zm0-144h72v-72h-72v72Zm228 432h72v-72h-72v72Zm0-144h72v-72h-72v72Z" />
+                </svg>
+                Bangalore
+            </span>
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#000000">
+                    <path
+                        d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z" />
+                </svg> Full Time
+            </span>
+        </div>
+        <a href="mailto:hr@delanceytech.com">
+        <button class="apply-button">APPLY</button></a>
+    </div>
+
+    <div class="application-form">
+        <h2>Apply</h2>
+        <form class="form-grid">
+            <div class="form-group">
+                <label for="fullname">FULL NAME *</label>
+                <input type="text" id="fullname" placeholder="Full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">EMAIL ADDRESS *</label>
+                <input type="email" id="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">CONTACT *</label>
+                <input type="text" id="contact" placeholder="Contact" required>
+            </div>
+            <div class="form-group">
+                <label for="role">ROLE *</label>
+                <input type="text" id="role" placeholder="Role applying for" required>
+            </div>
+            <div class="form-group full">
+                <label for="message">FEW WORDS</label>
+                <textarea id="message" rows="3" placeholder="How'd you describe your self? Max – 500"></textarea>
+            </div>
+            <div class="form-group full">
+                <label for="resume">UPLOAD RESUME *</label>
+                <input type="file" id="resume" required>
+            </div>
+            <div class="form-group full">
+                <button class="submit-btn">APPLY NOW</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        // Load the header dynamically
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar-container").innerHTML = data;
+            })
+            .catch(error => console.error("Error loading header:", error));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Services @ Delancey</title>
+	<link rel="stylesheet" href="/css/header.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-thin-rounded/css/uicons-thin-rounded.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Akronim&family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Bitcount+Grid+Double:wght@100..900&family=Bungee+Outline&family=Caveat:wght@400..700&family=Codystar:wght@300;400&family=Darumadrop+One&family=Frijole&family=Fuzzy+Bubbles:wght@400;700&family=Ga+Maamli&family=Geostar+Fill&family=Jacques+Francois+Shadow&family=Jolly+Lodger&family=Libre+Barcode+39+Extended+Text&family=Luckiest+Guy&family=Nosifer&family=Nova+Mono&family=Orbitron:wght@400..900&family=Passero+One&family=Poetsen+One&family=Press+Start+2P&family=Rubik+Distressed&family=Rubik+Scribble&family=Rubik+Vinyl&family=Sofadi+One&family=Tagesschrift&family=Tilt+Prism&family=Tiny5&family=Tourney:ital,wght@0,100..900;1,100..900&family=Underdog&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fff;
+        }
+
+        .logo {
+            text-align: center;
+            margin-top: 3%;
+        }
+
+        .logo img {
+            width: 150px;
+            margin-bottom: 10px;
+        }
+
+        .logo h1 {
+            font-family: "Jacques Francois Shadow", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 5rem;
+            font-weight: 400;
+            color: #000000;
+        }
+
+        .logo span {
+            color: #007bff;
+        }
+
+        .tagline {
+            font-family: "Jacques Francois Shadow", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .badge {
+            z-index: 3;
+            position: absolute;
+            top: 220px;
+            right: 160px;
+            background: #1ee0d3;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 50%;
+            border: 5px solid white;
+            width: 110px;
+            height: 110px;
+            text-align: center;
+            line-height: 1.2;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .sections {
+            clip-path: polygon(0 21%, 100% 0%, 100% 100%, 0% 100%);
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sections1 {
+            clip-path: polygon(0 0, 100% 0%, 100% 79%, 0% 100%);
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+
+        .section,
+        .section2 {
+            flex: 1;
+            height: 375px;
+            min-width: 300px;
+            padding: 80px 20px 30px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+      
+
+        .section2 {
+            padding: 10px 20px 100px 20px;
+        }
+
+        .section h2,
+        .section2 h2 {
+            font-family: "Tagesschrift", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+        .section p,
+        .section2 p {
+            font-family: "Tagesschrift", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .arrow {
+            opacity: 1;
+            font-size: 28px;
+            margin-top: 5px;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            display: inline-block;
+            animation: bounce 2s infinite;
+            text-align: center;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        .section .demos,
+        .section2 .demos {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            gap: 75px;
+        }
+
+        .section .demos img {
+            position: relative;
+            bottom: 7%;
+            width: 100px;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+
+        .section2 .demos {
+            margin-top: 0px;
+        }
+
+        .section2 .demos img {
+            position: relative;
+            width: 100px;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+
+        .section2 .demos .img1 {
+            position: absolute;
+            height: 180px;
+            width: 120px;
+            z-index: 2;
+            top: 35%;
+        }
+
+        .section .demos .img1 {
+            position: absolute;
+            height: 180px;
+            width: 120px;
+            z-index: 2;
+            top: 50%;
+        }
+
+
+        .ADM {
+            background: linear-gradient(to bottom, #ca963c74, #0e68bda5), url('images/AppDevMain.png') no-repeat center/cover;
+        }
+
+        .AT {
+            background: linear-gradient(to bottom, #ad4d4d, #833dc87d), url('images/AppTestMain.jpg') no-repeat center/cover;
+        }
+
+        .BTC {
+            background: linear-gradient(to bottom, #38a40c, #38a40c80), url('images/BusTechMain.webp') no-repeat center/cover;
+        }
+
+        .CI {
+            background: linear-gradient(to bottom, #a10480, #a1048080), url('images/cloMain.jpg') no-repeat center/cover;
+        }
+
+        .CS {
+            background: linear-gradient(to bottom, #35383a, #4c617180), url('images/CyberMain.jpg') no-repeat center/cover;
+        }
+
+        .DAA {
+            background: linear-gradient(to bottom, #565cd7a8, #79953884), url('images/DAAMain.png') no-repeat center/cover;
+        }
+
+        .DE {
+            background: linear-gradient(to bottom, #b5c7ae81, #57da2489), url('images/DEMain.jpg') no-repeat center/cover;
+        }
+
+        .SRD {
+            background: linear-gradient(to bottom, #9dfadc8c, #a1047f91), url('images/SRDMain.png') no-repeat center/cover;
+        }
+
+        .section3 {
+            background: linear-gradient(to top, #000000 50%, #ffffff 50%);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        .content-box {
+            margin: 5rem 0 5rem 0;
+            background-color: #d29052;
+            width: 85%;
+            padding: 30px 30px 30px 250px;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .content-box h1 {
+            font-family: "Nosifer", system-ui;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #000;
+        }
+
+        .columns {
+            display: flex;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .column h3 {
+            font-family: "Press Start 2P";
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #000;
+        }
+
+        .column p {
+            font-family: "Sofadi One";
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #000;
+        }
+
+        .icon {
+            width: 100%;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon img {
+            max-height: 300px;
+            object-fit: contain;
+            opacity: 1;
+        }
+
+        .section4 {
+            background-color: #c2c2c2;
+            padding: 2rem;
+        }
+
+        .section4 h1 {
+            color: #000;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: "Tourney";
+            font-size: 2.5rem;
+            font-weight: 400;
+        }
+
+        .card {
+            background-color: white;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            scroll-margin-top: 100px;
+            transition: max-height 0.4s ease;
+        }
+
+        .card.active .card-content {
+            max-height: 800px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+        }
+
+        .card-header h4 {
+            font-family: "Orbitron", system-ui;
+            margin: 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-header img.icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .section4 .arrow {
+            font-family: Arial, sans-serif;
+            transition: transform 0.3s ease;
+            font-size: 20px;
+            color: #000;
+            animation: none;
+        }
+
+        .card.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1.2s ease, padding 1.2s ease;
+            padding: 0 16px;
+        }
+
+        .card.active .card-content {
+            max-height: 500px;
+            padding: 12px 16px 16px;
+        }
+
+        .card-content p {
+            font-family: "Underdog", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin-top: 0;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .card-content h4 {
+            font-family: "Tiny5";
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-content ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .card-content li {
+            font-family: "Nova Mono";
+            margin-bottom: 8px;
+        }
+
+        .section5 {
+            background: #000 url(images/rotation-image-background.webp) no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 50vh;
+            overflow: hidden;
+        }
+
+        .rotating-wrapper {
+            position: relative;
+            width: 250px;
+            height: 250px;
+        }
+
+        .rotating-img {
+            position: absolute;
+            top: 20%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            object-fit: contain;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+
+
+        .rotating-img {
+            animation: spin 6s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width:1999px) {
+            .section5 {
+                height: 30vh;
+            }
+
+        }
+
+        @media (max-width:1300px) {
+            .section5 {
+                height: 50vh;
+            }
+
+        }
+
+        @media (max-width:1260px) {
+
+            .section .demos,
+            .section2 .demos {
+                gap: 70px;
+            }
+
+        }
+
+        @media (max-width:1240px) {
+            .section5 {
+                height: 30vh;
+            }
+
+            .section .demos,
+            .section2 .demos {
+                gap: 40px;
+            }
+
+            .section,
+            .section2 {
+                flex: 1 1 48%;
+            }
+
+            .sections {
+                clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 100%);
+            }
+
+            .sections1 {
+                clip-path: polygon(0 0, 100% 0%, 100% 90%, 0% 100%);
+            }
+
+            .content-box {
+                padding: 30px 30px 30px 200px;
+            }
+        }
+
+        @media (max-width:940px) {
+
+            .section,
+            .section2 {
+                width: 48%;
+            }
+
+            .sections,
+            .sections1 {
+                clip-path: none;
+            }
+
+            .badge {
+                top: 200px;
+                right: 100px;
+            }
+
+            .logo {
+                margin-top: 5%;
+            }
+
+            .content-box {
+                padding: 30px 30px 30px 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-header h4 {
+                font-size: 16px;
+            }
+
+            .card-header img.icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .arrow {
+                font-size: 28px;
+            }
+
+            .card-content {
+                padding: 0 12px;
+            }
+
+            .card.active .card-content {
+                padding: 12px 12px 16px;
+            }
+
+            .columns {
+                flex-direction: column;
+            }
+
+            .column {
+                margin-bottom: 40px;
+            }
+
+            .content-box {
+                width: 90%;
+                padding: 60px 30px;
+            }
+
+            .content-box h1 {
+                font-size: 36px;
+                text-align: center;
+            }
+
+            .column h3,
+            .column p {
+                text-align: center;
+            }
+
+            .section,
+            .section2 {
+                padding: 40px 0 30px 0;
+            }
+
+            .section .demos,
+            .section2 .demos {
+                gap: 100px;
+            }
+
+            .section2 .demos .img1,
+            .section .demos .img1 {
+                position: absolute;
+                height: 180px;
+                width: 120px;
+                z-index: 2;
+                top: 45%;
+            }
+
+            .section .demos,
+            .section2 .demos {
+                margin-top: 0px;
+            }
+
+            .badge {
+                top: 220px;
+                right: 20px;
+                width: 90px;
+                height: 90px;
+                font-size: 14px;
+                padding: 15px;
+            }
+        }
+
+
+         @media (max-width:715px) {
+
+            .badge {
+                top: 320px;
+            }
+        }
+
+        @media (max-width:486px) {
+             .rotating-img {
+                width: 160%;
+                right: -30%;
+                top:10%;
+            }
+        }
+        @media (max-width: 480px) {
+            .card-header {
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .arrow {
+                align-self: flex-end;
+            }
+        }
+
+       
+
+        @media (max-width:400px) {
+            .rotating-img {
+                width: 150%;
+                right: -30%;
+            }
+
+        }
+
+        @media (max-width:358px) {
+            .logo h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="software-services">
+        <div id="navbar-container"></div>
+
+        <div class="logo">
+            <img src="svg/DT_LogoDesign.svg" alt="Logo"  >
+            <h1>Software Services</h1>
+            <p class="tagline"><span>Digital problems? We’ve got 99 solutions.</span></p>
+        </div>
+
+        <div class="badge">
+            WE PROVIDE ↓
+        </div>
+
+        <div class="sections">
+            <div class="section ADM">
+                <h2>Application </h2>
+                <p>Development & Maintenance</p>
+                <a href="#ADM" class="arrow" data-target="ADM">↓</a>
+                <div class="demos">
+                    <img    class="img1" src="images/appliDev1.jpg" alt="Application Development & Maintenance" />
+                    <img    class="img2" src="images/appliDev2.jpg" alt="Application Development & Maintenance" />
+                    <img    class="img3" src="images/appliDev3.jpg" alt="Application Development & Maintenance" />
+                </div>
+            </div>
+
+            <div class="section AT">
+                <h2>Application</h2>
+                <p> Testing</p>
+                <a href="#AT" class="arrow" data-target="AT">↓</a>
+                <div class="demos">
+                    <img    class="img1" src="images/appTest3.webp" alt="Application Testing" />
+                    <img    class="img2" src="images/appTest2.webp" alt="Application Testing" />
+                    <img    class="img3" src="images/appTest1.webp" alt="Application Testing" />
+                </div>
+            </div>
+
+            <div class="section BTC">
+                <h2>Business </h2>
+                <p>and Technology Consulting</p>
+                <a href="#BTC" class="arrow" data-target="BTC">↓</a>
+                <div class="demos">
+                    <img    class="img1" src="images/BusTech3.jpg" alt="Business & Technology Consulting" />
+                    <img    class="img2" src="images/BusTech2.jpg" alt="Business & Technology Consulting" />
+                    <img    class="img3" src="images/BusTech1.jpg" alt="Business & Technology Consulting" />
+                </div>
+            </div>
+
+            <div class="section CI">
+                <h2>Cloud</h2>
+                <p> and infrastructure</p>
+                <a href="#CI" class="arrow" data-target="CI">↓</a>
+                <div class="demos">
+                    <img    class="img1" src="images/Clo1.jpg" alt="Cloud & infrastructure" />
+                    <img    class="img2" src="images/Clo3.jpg" alt="Cloud & infrastructure" />
+                    <img    class="img3" src="images/Clo2.jpg" alt="Cloud & infrastructure" />
+                </div>
+            </div>
+        </div>
+        <div class="sections1">
+            <div class="section2 CS">
+                <h2>Cybersecurity</h2>
+                <p>Partnered Protection</p>
+                <a href="#CS" class="arrow" data-target="CS">↓</a>
+                <div class="demos">
+                    <img    class="img1" src="images/Cyber3.jpg" alt="Cybersecurity" />
+                    <img    class="img2" src="images/Cyber2.jpg" alt="Cybersecurity" />
+                    <img    class="img3" src="images/Cyber1.jpg" alt="Cybersecurity" />
+                </div>
+            </div>
+
+            <div class="section2 DAA">
+                <h2>Data</h2>
+                <p> AI, and analytics</p>
+                <a href="#DAA" class="arrow" data-target="DAA">↓</a>
+                <div class="demos">
+                    <img    class="img1" src="images/DAA1.jpg" alt="Data, AI & Analytics" />
+                    <img    class="img2" src="images/DAA2.jpg" alt="Data, AI & Analytics" />
+                    <img    class="img3" src="images/DAA3.jpg" alt="Data, AI & Analytics" />
+                </div>
+            </div>
+
+            <div class="section2 DE">
+                <h2>Digital</h2>
+                <p>Experience</p>
+                <a href="#DE" class="arrow" data-target="DE">↓</a>
+                <div class="demos">
+                    <img    class="img1" src="images/DE1.jpg" alt="Digital Experience" />
+                    <img    class="img2" src="images/DE2.jpg" alt="Digital Experience" />
+                    <img    class="img3" src="images/DE3.jpg" alt="Digital Experience" />
+                </div>
+            </div>
+
+            <div class="section2 SRD">
+                <h2>Software</h2>
+                <p>R&D services</p>
+                <a href="#SRD" class="arrow" data-target="SRD">↓</a>
+                <div class="demos">
+                    <img    class="img1" src="images/SRD3.jpg" alt="Software R&D services" />
+                    <img    class="img2" src="images/SRD2.jpg" alt="Software R&D services" />
+                    <img    class="img3" src="images/SRD1.jpg" alt="Software R&D services" />
+                </div>
+            </div>
+        </div>
+        <div class="section3">
+            <section class="content-box">
+                <h1>We Got You Covered!!!</h1>
+                <div class="columns">
+
+                    <div class="column">
+                        <div>
+                            <h3>Design</h3>
+                            <p>Fonts, colors, pixels — oh my! From tips to tutorials, we’ve got the goods to keep your
+                                design game strong (and your mockups spicy).</p>
+                        </div>
+                        <div class="icon">
+                            <img   src="/svg/design.svg" alt="Design Icon" width="160" height="160">
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div>
+                            <h3>Development</h3>
+                            <p>The web never sleeps — and neither do we. Stay ahead with dev tricks, frontend magic, and
+                                the
+                                occasional bug-squashing adventure.</p>
+                        </div>
+                        <div class="icon">
+                            <img   src="/svg/development.svg" alt="Development Icon" width="160" height="160">
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div>
+                            <h3>Resources</h3>
+                            <p>Gadgets, gizmos, and geeky goodies. We round up the tools that keep your workflow smooth
+                                and
+                                your brain happy.</p>
+                        </div>
+                        <div class="icon">
+                            <img  src="/svg/resources.svg" alt="Resources Icon" width="160" height="160">
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+        <div class="section4">
+            <h1>Secure. Scalable. Smart. That’s the Delancey Standard.</h1>
+            <div class="card" id="ADM">
+                <div class="card-header">
+                    <h4><img   src="images/apm2.png" class="icon" alt="settingss icon">Application
+                        Development & Maintenance</h4>
+                    <span class="arrow">&#x2B07;</span>
+                </div>
+                <div class="card-content">
+                    <p>Modernize, maintain, and optimize your application landscape using standardized development
+                        methodologies and agile practices — all while balancing the demands of innovation and legacy
+                        system
+                        support.</p>
+                    <h4>Why Delancey Rocks:</h4>
+                    <ul>
+                        <li>Agile + DevOps = Speedy apps, no drama</li>
+                        <li>Mainframe? Open-source? We speak all tech languages</li>
+                        <li>Launch new ideas faster than your morning caffeine hits</li>
+                        <li>Strategy meets nerdy brilliance — we plan before we code</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" id="AT">
+                <div class="card-header">
+                    <h4>
+                        <img   src="images/at.png" class="icon" alt="">
+                        Application Testing
+                    </h4>
+                    <span class="arrow">&#x2B07;</span>
+                </div>
+                <div class="card-content">
+                    <p>Break bugs before they break your app. Our tailored testing services focus purely on what
+                        matters:
+                        your goals. From app testing to unified communications and devices, we bring precision to every
+                        click, swipe, and crash.</p>
+                    <h4>Why Delancey Rocks:</h4>
+                    <ul>
+                        <li>You set the goals, we smash 'em — with zero detours</li>
+                        <li>Automation, Performance, Security — we test it all, obsessively</li>
+                        <li>Tools + frameworks + governance = bulletproof quality</li>
+                        <li>ISVs and products? We’ve got a custom method just for that</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" id="BTC">
+                <div class="card-header">
+                    <h4>
+                        <img    src="images/btc.png" class="icon" alt="">
+                        Business & Technology Consulting
+                    </h4>
+                    <span class="arrow">&#x2B07;</span>
+                </div>
+                <div class="card-content">
+                    <p>In today’s tech jungle, every decision counts. From strategy to execution, we help you stay
+                        sharp,
+                        modern, and always a few steps ahead. Think of us as your digital compass with a nerdy MBA.</p>
+                    <h4>Why Delancey Rocks:</h4>
+                    <ul>
+                        <li>We don’t just consult — we co-pilot your digital journey</li>
+                        <li>Business goals + tech smarts = smart moves, faster</li>
+                        <li>Balance innovation with execution like a boss</li>
+                        <li>Strategy, infrastructure, services — all in sync, no guesswork</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" id="CI">
+                <div class="card-header">
+                    <h4>
+                        <img   src="images/ci.png" class="icon" alt="">
+                        Cloud & Infrastructure
+                    </h4>
+                    <span class="arrow">&#x2B07;</span>
+                </div>
+                <div class="card-content">
+                    <p>Tech complexity? We eat that for breakfast. Our cloud and infrastructure pros simplify your IT
+                        world
+                        so you can zero in on what actually matters — growing your business.</p>
+                    <h4>Why Delancey Rocks:</h4>
+                    <ul>
+                        <li>Scale smarter with cloud solutions built for agility</li>
+                        <li>Modernize without the migraines — we handle the heavy lifting</li>
+                        <li>Security, reliability, and speed baked into every layer</li>
+                        <li>You focus on business, we’ll handle the tech jungle</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" id="CS">
+                <div class="card-header">
+                    <h4>
+                        <img   src="images/cs.png" class="icon" alt="">
+                        Cybersecurity
+                    </h4>
+                    <span class="arrow">&#x2B07;</span>
+                </div>
+                <div class="card-content">
+                    <p>In a world where every click could be a threat, cybersecurity isn’t optional — it’s critical. We
+                        help
+                        you stay ahead of evolving risks, close talent gaps, and lock down your digital assets like a
+                        pro.
+                    </p>
+                    <h4>Why Delancey Rocks:</h4>
+                    <ul>
+                        <li>Proactive defense that evolves with the threat landscape</li>
+                        <li>MSSP-powered support = 24/7 vigilance without the overhead</li>
+                        <li>Boost visibility, cut response time, and outsmart the bad guys</li>
+                        <li>We don’t just protect — we future-proof your organization</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" id="DAA">
+                <div class="card-header">
+                    <h4>
+                        <img   src="images/daa.png" class="icon" alt="">
+                        Data, AI & Analytics
+                    </h4>
+                    <span class="arrow">&#x2B07;</span>
+                </div>
+                <div class="card-content">
+                    <p>The future belongs to those who decode it. We help you turn raw data into real-time answers,
+                        smarter
+                        decisions, and business moves that actually move the needle.</p>
+                    <h4>Why Delancey Rocks:</h4>
+                    <ul>
+                        <li>We turn data into action — not just dashboards</li>
+                        <li>AI, ML, automation — we make it work, not just sound cool</li>
+                        <li>Speedy dev with API & integration firepower</li>
+                        <li>Your business insights + our tech brain = future-ready solutions</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" id="DE">
+                <div class="card-header">
+                    <h4>
+                        <img   src="images/de.png" class="icon" alt="">
+                        Digital Experience
+                    </h4>
+                    <span class="arrow">&#x2B07;</span>
+                </div>
+                <div class="card-content">
+                    <p>Digital moves fast — and so do we. Whether you're a business, organization, or public entity, we
+                        help
+                        you stay ahead by designing experiences your users actually want. Think frictionless journeys,
+                        smarter ecosystems, and business models ready for tomorrow.</p>
+                    <h4>Why Delancey Rocks:</h4>
+                    <ul>
+                        <li>We build digital experiences that feel like magic (but run on serious tech)</li>
+                        <li>From customer to employee journeys — we cover it all</li>
+                        <li>Local talent + global reach = innovation that scales</li>
+                        <li>We solve the complex stuff, so you can move faster and smarter</li>
+                        <li>Your users expect agility — and we deliver nothing less</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" id="SRD">
+                <div class="card-header">
+                    <h4>
+                        <img   src="images/srd.png" class="icon" alt="">
+                        Software R&D Services
+                    </h4>
+                    <span class="arrow">&#x2B07;</span>
+                </div>
+                <div class="card-content">
+                    <p>We power the tech behind today’s smartest devices. From embedded systems to wireless and cloud
+                        tech,
+                        we’re the go-to software R&D partner for industries like telecom, automotive, semiconductors,
+                        and
+                        high-tech.</p>
+                    <h4>Why Delancey Rocks:</h4>
+                    <ul>
+                        <li>We help global tech leaders build the future — from 5G to IoT</li>
+                        <li>Millions of people use our code daily (including drivers in tens of millions of cars)</li>
+                        <li>From early concept to full-on R&D outsourcing — we’ve got your back</li>
+                        <li>Embedded, wireless, cloud — we speak your tech language</li>
+                        <li>We turn bold ideas into reliable, scalable software products</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="section5">
+            <div class="rotating-wrapper">
+                <img   src="images/rotation-image.webp" alt="Rotating image" class="rotating-img">
+            </div>
+        </div>
+    </div>
+    <script>
+
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar-container").innerHTML = data;
+            })
+            .catch(error => console.error("Error loading header:", error));
+        const cards = document.querySelectorAll('.card');
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll('.card');
+
+            // Toggle cards manually on header click (optional)
+            cards.forEach(card => {
+                const header = card.querySelector('.card-header');
+                if (header) {
+                    header.addEventListener('click', () => {
+                        card.classList.toggle('active');
+                    });
+                }
+            });
+
+            const arrows = document.querySelectorAll('.arrow[data-target]');
+            arrows.forEach(arrow => {
+                arrow.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const targetId = arrow.getAttribute('data-target');
+                    const targetCard = document.getElementById(targetId);
+                    if (!targetCard) return;
+
+                    cards.forEach(card => card.classList.remove('active'));
+
+                    void targetCard.offsetWidth;
+                    targetCard.classList.add('active');
+
+                    setTimeout(() => {
+                        const rect = targetCard.getBoundingClientRect();
+                        const offset = -200; 
+                        window.scrollTo({
+                            top: window.scrollY + rect.top + offset,
+                            behavior: 'smooth'
+                        });
+                    }, 600);
+                });
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

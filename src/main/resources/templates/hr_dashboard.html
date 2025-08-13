@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hr-Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 50px;
+        }
+        .dashboard {
+            background-color: #5e057e;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .logout {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Welcome, <span th:text="${fullname}"></span>!</h1>
+        <p>You are logged in as <b>Hr</b>.</p>
+        <div class="logout">
+            <a th:href="@{/logout}" style="color: yellow;">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
